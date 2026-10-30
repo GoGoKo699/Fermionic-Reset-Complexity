@@ -1,0 +1,138 @@
+{
+  "purpose": "Finite-example convention and inequality checks; not a proof.",
+  "utc": "2026-10-30T10:50:08.812348+00:00",
+  "seed": 20261030,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "dt": 0.03,
+  "steps": 100,
+  "tolerance": 1e-09,
+  "results": [
+    {
+      "case": "full_rank_linear_jumps",
+      "n_modes": 1,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.5009152829976647,
+      "exact_fidelity_bound": 0.9751064658160679,
+      "minimum_log_defect_margin": 0.01734617737127206,
+      "minimum_fidelity_slack": 0.008490183407583007,
+      "passed": true
+    },
+    {
+      "case": "single_rotated_loss",
+      "n_modes": 1,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.9751064658160687,
+      "exact_fidelity_bound": 0.9751064658160679,
+      "minimum_log_defect_margin": -3.419486915845482e-14,
+      "minimum_fidelity_slack": -8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "case": "uniform_loss_saturation",
+      "n_modes": 1,
+      "action": 3.0,
+      "final_fidelity": 0.975106465816068,
+      "exact_fidelity_bound": 0.9751064658160681,
+      "log_defect_margin": 4.440892098500626e-15,
+      "passed": true
+    },
+    {
+      "case": "full_rank_linear_jumps",
+      "n_modes": 2,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.2727771140327445,
+      "exact_fidelity_bound": 0.7893166069435357,
+      "minimum_log_defect_margin": 0.02130950138168766,
+      "minimum_fidelity_slack": 0.005329086704264574,
+      "passed": true
+    },
+    {
+      "case": "single_rotated_loss",
+      "n_modes": 2,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.3484630000298225,
+      "exact_fidelity_bound": 0.7893166069435357,
+      "minimum_log_defect_margin": 6.901387715946283e-05,
+      "minimum_fidelity_slack": 0.0001251603028372128,
+      "passed": true
+    },
+    {
+      "case": "uniform_loss_saturation",
+      "n_modes": 2,
+      "action": 3.0,
+      "final_fidelity": 0.7893166069435361,
+      "exact_fidelity_bound": 0.7893166069435361,
+      "log_defect_margin": 1.3322676295501878e-15,
+      "passed": true
+    },
+    {
+      "case": "full_rank_linear_jumps",
+      "n_modes": 3,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.13526162241698317,
+      "exact_fidelity_bound": 0.5434589171243124,
+      "minimum_log_defect_margin": 0.015357373013378686,
+      "minimum_fidelity_slack": 0.0019390853045846979,
+      "passed": true
+    },
+    {
+      "case": "single_rotated_loss",
+      "n_modes": 3,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.16944923325669242,
+      "exact_fidelity_bound": 0.5434589171243124,
+      "minimum_log_defect_margin": 4.1667198788997856e-05,
+      "minimum_fidelity_slack": 7.767330896141234e-05,
+      "passed": true
+    },
+    {
+      "case": "uniform_loss_saturation",
+      "n_modes": 3,
+      "action": 3.0,
+      "final_fidelity": 0.543458917124313,
+      "exact_fidelity_bound": 0.543458917124313,
+      "log_defect_margin": -8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "case": "full_rank_linear_jumps",
+      "n_modes": 5,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.03470255142187459,
+      "exact_fidelity_bound": 0.2011263437849013,
+      "minimum_log_defect_margin": 0.015145120637271447,
+      "minimum_fidelity_slack": 0.00048036653191563944,
+      "passed": true
+    },
+    {
+      "case": "single_rotated_loss",
+      "n_modes": 5,
+      "segments": 100,
+      "action": 2.9999999999999947,
+      "final_fidelity": 0.050236908498706045,
+      "exact_fidelity_bound": 0.2011263437849013,
+      "minimum_log_defect_margin": 3.70483783526665e-07,
+      "minimum_fidelity_slack": 2.135095595875297e-05,
+      "passed": true
+    },
+    {
+      "case": "uniform_loss_saturation",
+      "n_modes": 5,
+      "action": 3.0,
+      "final_fidelity": 0.2011263437849016,
+      "exact_fidelity_bound": 0.2011263437849016,
+      "log_defect_margin": 8.881784197001252e-16,
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

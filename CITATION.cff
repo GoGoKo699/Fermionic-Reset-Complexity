@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this repository when using its scientific derivations or verification code."
+type: software
+title: "Fermionic Reset Complexity"
+authors:
+  - family-names: Lin
+    given-names: Ruge
+repository-code: "https://github.com/GoGoKo699/Fermionic-Reset-Complexity"
+url: "https://github.com/GoGoKo699/Fermionic-Reset-Complexity"
+abstract: "Exact Gaussian damping-action limits and a matched Gaussian-versus-interacting hierarchy for universal reset of fermionic registers."

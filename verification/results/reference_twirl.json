@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "seed": 20261030,
+  "twirl_dimensions_modes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "max_reference_twirl_half_trace_residual": 4.458572268739097e-16,
+  "max_reference_loss_identity_half_trace_residual": 2.0217660011423446e-16,
+  "parity_embedding_sizes_checked": [
+    24,
+    999
+  ],
+  "cutoff_inequalities": [
+    {
+      "epsilon": 0.49,
+      "cutoff": 201,
+      "stage_error_bound": 0.06081433243366462,
+      "linear_action_coefficient": 14.691400847377583,
+      "final_action_bound": 1348.6701972757937
+    },
+    {
+      "epsilon": 0.1,
+      "cutoff": 252,
+      "stage_error_bound": 0.012355181033807117,
+      "linear_action_coefficient": 14.691400847377583,
+      "final_action_bound": 2148.3406629884844
+    },
+    {
+      "epsilon": 0.001,
+      "cutoff": 399,
+      "stage_error_bound": 0.00012497088260290126,
+      "linear_action_coefficient": 14.691400847377583,
+      "final_action_bound": 5422.355686696346
+    },
+    {
+      "epsilon": 1e-06,
+      "cutoff": 620,
+      "stage_error_bound": 1.2515914030049303e-07,
+      "linear_action_coefficient": 14.691400847377583,
+      "final_action_bound": 12981.79387426928
+    },
+    {
+      "epsilon": 1e-12,
+      "cutoff": 1062,
+      "stage_error_bound": 1.2553650690412287e-13,
+      "linear_action_coefficient": 14.691400847377583,
+      "final_action_bound": 37480.186303184375
+    }
+  ],
+  "scope": "Finite algebra/constant checks; universal proof is analytical."
+}

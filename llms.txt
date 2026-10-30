@@ -1,0 +1,22 @@
+# Fermionic Reset Complexity
+
+Scientific repository: https://github.com/GoGoKo699/Fermionic-Reset-Complexity
+
+The central question is the total Markovian damping action needed to reset an entire fermionic register. At fixed global half-diamond error, Gaussian control costs Theta(n log n), while arbitrary fast parity-preserving interacting control costs Theta(n). Both classes use the same loss port, no supplied pure quantum ancillas, and the same input-independent classical Gaussian-control randomness.
+
+## Reading routes
+
+- Connected scientific story: science/README.md, then science/model.md and science/interpretation.md.
+- Exact controls, rate normalization and reference contract: science/model.md.
+- Exact maximally mixed-input Gaussian frontier, general linear jumps, spectral crossings and pulse limits: science/gaussian_bound.md.
+- Universal interacting upper bound, parity twirl, reference-aware compression, linear lower bound and Gaussian universal upper: science/interacting_reset.md.
+- Explicit finite-size thresholds, action certificate and asymptotic attainable coefficient: science/finite_size.md.
+- Closest external and internal scientific comparisons: references/RELATED_WORK.md; bibliography: references/references.bib.
+- Numerical reproduction and what the checks establish: verification/README.md.
+- Figure source: verification/plot_action_scaling.py; certified finite plans: verification/finite_protocol.py.
+
+## Essential distinctions
+
+The exact formula F_G(n,A)=[1-exp(-A/n)/2]^n is for vacuum preparation from I/2^n. It is a necessary witness for universal reset, not an exact finite-action solution of that channel optimization. The Gaussian state cost is A_G^tau; the universal cost is A_G. All randomized branches satisfy the action cap. Their average need not be Gaussian. The interacting finite-size curves are achievable bounds, not the finite optimum. Coherent synthesis, locality and gate time are unpriced. Classical randomization supplies unital averaging and its record is ignored at the output. The ordinary matrix-algebra half-diamond guarantee includes arbitrary references.
+
+The public repository owns the scientific statements and reproducibility materials. Bibliographic claims and inherited proof ingredients are documented in references/RELATED_WORK.md.
