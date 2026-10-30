@@ -34,22 +34,20 @@ The matrix-exponential steps evaluate the stated finite-dimensional generators i
 
 The exact Gaussian state-preparation frontier is
 
-$$
+```math
 F_{\mathrm G}(n,A)=\left(1-\frac12e^{-A/n}\right)^n.
-$$
+```
+It starts from the maximally mixed input. Its inverse, $`A_{\mathrm G}^{\tau}(n,\epsilon)`$, is the exact action needed for that selected-input task and a lower bound for universal Gaussian reset. The scripts' gaussian_witness_lower field refers to this witness. It is not an exact finite-action universal-reset optimum.
 
-It starts from the maximally mixed input. Its inverse, $A_{\mathrm G}^{\tau}(n,\epsilon)$, is the exact action needed for that selected-input task and a lower bound for universal Gaussian reset. The scripts' gaussian_witness_lower field refers to this witness. It is not an exact finite-action universal-reset optimum.
-
-The universal Gaussian construction supplies the achievable upper bound $n\ln(n/\epsilon)$. The Gaussian shaded region in the figure lies between this construction and the maximally mixed-input witness. Reference correlations are included in the proof of the construction.
+The universal Gaussian construction supplies the achievable upper bound $`n\ln(n/\epsilon)`$. The Gaussian shaded region in the figure lies between this construction and the maximally mixed-input witness. Reference correlations are included in the proof of the construction.
 
 The interacting_certified_upper field is the smaller action of two explicitly available universal protocols: the size-dependent compression protocol and the Gaussian universal construction. The selected protocol's name and error bound are reported with it. This is an attainable interacting upper bound, not an optimized interacting action. The general spectral lower bound,
 
-$$
+```math
 \max\{0,n\ln2+\ln(1-\epsilon)\},
-$$
-
+```
 applies to arbitrary allowed coherent control. It need not meet the constructive interacting upper bound at finite size.
 
-In the finite-protocol report, compression_error_bound sums the allocated analytical stage budgets and the final cleanup budget $\epsilon/2$. The selected_protocol_error_bound refers to the chosen construction: it equals $\epsilon$ for the Gaussian fallback and the compression budget otherwise. The separate tail and residue evaluation fields are floating-point diagnostics; log_parity_residue retains the logarithm when a displayed residue underflows. An evaluated zero is not a certificate of exactly zero error.
+In the finite-protocol report, compression_error_bound sums the allocated analytical stage budgets and the final cleanup budget $`\epsilon/2`$. The selected_protocol_error_bound refers to the chosen construction: it equals $`\epsilon`$ for the Gaussian fallback and the compression budget otherwise. The separate tail and residue evaluation fields are floating-point diagnostics; log_parity_residue retains the logarithm when a displayed residue underflows. An evaluated zero is not a certificate of exactly zero error.
 
-The fixed-error orders $A_{\mathrm G}=\Theta_\epsilon(n\ln n)$ and $A_{\mathrm I}=\Theta_\epsilon(n)$ follow from the analytical converses and constructions. The finite reports illustrate and check their implementation. They do not establish an optimal interacting coefficient, a sharp joint dependence on $n$ and $\epsilon$, or a bound on coherent gate synthesis, locality, or hardware duration.
+The fixed-error orders $`A_{\mathrm G}=\Theta_\epsilon(n\ln n)`$ and $`A_{\mathrm I}=\Theta_\epsilon(n)`$ follow from the analytical converses and constructions. The finite reports illustrate and check their implementation. They do not establish an optimal interacting coefficient, a sharp joint dependence on $`n`$ and $`\epsilon`$, or a bound on coherent gate synthesis, locality, or hardware duration.
