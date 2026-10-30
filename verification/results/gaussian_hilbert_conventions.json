@@ -1,0 +1,108 @@
+{
+  "seed": 20261030,
+  "tolerance": 1e-10,
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "results": [
+    {
+      "n_modes": 1,
+      "case": "general_linear_jumps",
+      "action": 0.73,
+      "covariance_error": 1.8041124150158794e-16,
+      "gaussian_spectrum_error": 1.1102230246251565e-16,
+      "largest_eigenvalue": 0.5335052525910071,
+      "fidelity_bound": 0.7590455049548988,
+      "log_defect_margin": 0.6606386622283832,
+      "passed": true
+    },
+    {
+      "n_modes": 1,
+      "case": "uniform_loss",
+      "action": 0.73,
+      "covariance_error": 1.1102230246251565e-16,
+      "gaussian_spectrum_error": 0.0,
+      "largest_eigenvalue": 0.7590455049548988,
+      "fidelity_bound": 0.7590455049548988,
+      "log_defect_margin": -1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "n_modes": 1,
+      "case": "gain_and_hermitian_jump",
+      "action": 0.8613999999999999,
+      "covariance_error": 4.440892098500626e-16,
+      "gaussian_spectrum_error": 2.220446049250313e-16,
+      "largest_eigenvalue": 0.7446736991915737,
+      "fidelity_bound": 0.7887149650460569,
+      "log_defect_margin": 0.18933423974524288,
+      "passed": true
+    },
+    {
+      "n_modes": 2,
+      "case": "general_linear_jumps",
+      "action": 0.7299999999999999,
+      "covariance_error": 5.551115123125783e-17,
+      "gaussian_spectrum_error": 2.7755575615628914e-16,
+      "largest_eigenvalue": 0.30522439939204943,
+      "fidelity_bound": 0.42628059664457174,
+      "log_defect_margin": 0.49793682722376514,
+      "passed": true
+    },
+    {
+      "n_modes": 2,
+      "case": "uniform_loss",
+      "action": 0.7299999999999999,
+      "covariance_error": 0.0,
+      "gaussian_spectrum_error": 0.0,
+      "largest_eigenvalue": 0.42628059664457174,
+      "fidelity_bound": 0.42628059664457174,
+      "log_defect_margin": 0.0,
+      "passed": true
+    },
+    {
+      "n_modes": 2,
+      "case": "gain_and_hermitian_jump",
+      "action": 0.8613999999999999,
+      "covariance_error": 8.326672684688674e-17,
+      "gaussian_spectrum_error": 1.1102230246251565e-16,
+      "largest_eigenvalue": 0.3778701104703964,
+      "fidelity_bound": 0.455588619782414,
+      "log_defect_margin": 0.15790049191713085,
+      "passed": true
+    },
+    {
+      "n_modes": 3,
+      "case": "general_linear_jumps",
+      "action": 0.73,
+      "covariance_error": 4.0245584642661925e-16,
+      "gaussian_spectrum_error": 1.1102230246251565e-16,
+      "largest_eigenvalue": 0.1511163109738244,
+      "fidelity_bound": 0.2247500930619248,
+      "log_defect_margin": 0.5225569278886601,
+      "passed": true
+    },
+    {
+      "n_modes": 3,
+      "case": "uniform_loss",
+      "action": 0.7300000000000001,
+      "covariance_error": 5.551115123125783e-17,
+      "gaussian_spectrum_error": 0.0,
+      "largest_eigenvalue": 0.2247500930619248,
+      "fidelity_bound": 0.2247500930619248,
+      "log_defect_margin": -3.3306690738754696e-16,
+      "passed": true
+    },
+    {
+      "n_modes": 3,
+      "case": "gain_and_hermitian_jump",
+      "action": 0.8613999999999999,
+      "covariance_error": 1.3322676295501878e-15,
+      "gaussian_spectrum_error": 2.7755575615628914e-17,
+      "largest_eigenvalue": 0.20779885246694021,
+      "fidelity_bound": 0.24389949313492154,
+      "log_defect_margin": 0.16297618530403757,
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}
