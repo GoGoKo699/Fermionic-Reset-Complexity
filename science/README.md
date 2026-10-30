@@ -15,3 +15,5 @@ Start with [the interpretation](interpretation.md) for the mechanism and [the mo
 | Which mechanisms and mathematical ingredients are inherited? | [Related work](../references/RELATED_WORK.md) and [bibliography](../references/references.bib) |
 
 For the full proof, read model → Gaussian bound → interacting reset → finite-size protocol. The exact Gaussian formula is a selected-input state-preparation result. The universal reset comparison establishes $`\Theta_\epsilon(n\ln n)`$ versus $`\Theta_\epsilon(n)`$ at fixed global error. Finite-size curves are bounds and constructions, not a numerical solution of the unrestricted control optimum.
+
+For a guided conceptual route, use the [30-milestone map](../learning/MILESTONES.md) and the [bridge from Watrous](../learning/WATROUS_BRIDGE.md). These connect the textbook foundations to the same canonical model, statements and proofs linked above.

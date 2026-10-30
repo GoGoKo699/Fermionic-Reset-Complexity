@@ -17,10 +17,11 @@ The register contains $`n\ge1`$ fermionic modes, with a fixed occupation basis a
 The prescribed dissipative port is
 
 ```math
-L(t)=\sqrt{\kappa(t)}\,c_1,\qquad
-\mathcal D[L](\rho)=L\rho L^\dagger-\frac12\{L^\dagger L,\rho\},
-\qquad
-A=\int\kappa(t)\,dt.
+\begin{aligned}
+L(t)&=\sqrt{\kappa(t)}\,c_1,\\
+\mathcal D[L](\rho)&=L\rho L^\dagger-\frac12\{L^\dagger L,\rho\},\\
+A&=\int\kappa(t)\,dt.
+\end{aligned}
 ```
 
 Thus a mode exposed to action $`a`$ has occupation survival probability $`q=e^{-a}`$. A Gaussian mode permutation, a loss interval on mode 1, and the inverse permutation implement loss on any chosen existing mode. The permutations do not add to $`A`$.
@@ -30,7 +31,7 @@ The controls permitted here are arbitrary fast parity-preserving unitaries and i
 For the vacuum replacement channel
 
 ```math
-\mathcal R_n(X)=|\Omega_n\rangle\langle\Omega_n|\,\operatorname{Tr}X,
+\mathcal R_n(X)=|\Omega_n\rangle\langle\Omega_n|\,\mathrm{Tr}X,
 ```
 
 write
@@ -43,24 +44,27 @@ It suffices to prove, for every system-reference state $`\rho_{SR}`$,
 
 ```math
 \frac12\left\|
-(\Phi\otimes\operatorname{id}_R)(\rho_{SR})
--
-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R
+\begin{aligned}
+&(\Phi\otimes\mathrm{id}_R)(\rho_{SR})\\
+&\quad-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R
+\end{aligned}
 \right\|_1
 \le\epsilon.
-\tag{I1}
+\qquad\text{(I1)}
 ```
 
 The proof uses the ordinary tensor-product reference and allows arbitrary input coherences. A restriction to physical parity-compatible inputs and references only weakens this requirement.
 
 ### Theorem I: linear action for the interacting class
 
-Fix $`0<\epsilon<1`$. Define
+Fix $`0\lt \epsilon\lt 1`$. Define
 
 ```math
-h=h_2(1/4),\qquad
-h_2(x)=-x\log_2x-(1-x)\log_2(1-x),\qquad
-\alpha=\frac{1+h}{2}<1,
+\begin{aligned}
+h&=h_2(1/4),\\
+h_2(x)&=-x\log_2x-(1-x)\log_2(1-x),\\
+\alpha&=\frac{1+h}{2}\lt 1,
+\end{aligned}
 ```
 
 and
@@ -79,7 +83,7 @@ There is an allowed protocol satisfying $`d_{\rm reset}(\Phi)\le\epsilon`$, with
 A\le
 \frac{\ln4}{1-\alpha}\,n+
 M_\epsilon\ln\frac{2M_\epsilon}{\epsilon}.
-\tag{I2}
+\qquad\text{(I2)}
 ```
 
 Conversely, every allowed protocol with $`d_{\rm reset}(\Phi)\le\epsilon`$ and a pathwise action cap $`A`$ satisfies
@@ -87,7 +91,7 @@ Conversely, every allowed protocol with $`d_{\rm reset}(\Phi)\le\epsilon`$ and a
 ```math
 A\ge
 \max\left\{0,\ n\ln2+\ln(1-\epsilon)\right\}.
-\tag{I3}
+\qquad\text{(I3)}
 ```
 
 Consequently, at fixed global error,
@@ -95,7 +99,7 @@ Consequently, at fixed global error,
 ```math
 A_{\mathrm I}(n,\epsilon)
 =\Theta_\epsilon(n).
-\tag{I4}
+\qquad\text{(I4)}
 ```
 
 The constants in (I2) are chosen for a transparent finite proof. They are not optimal. The [finite-size construction](finite_size.md) chooses the compression threshold from the active block size and gives a smaller attainable asymptotic coefficient.
@@ -118,7 +122,7 @@ For every even subset $`E\subseteq\{1,\ldots,2m\}`$, let $`W_E`$ be the ordered 
 \frac{1}{2^{2m-1}}
 \sum_{\substack{E\subseteq\{1,\ldots,2m\}\\|E|\ {\rm even}}}
 W_EXW_E^\dagger
-\tag{I5}
+\qquad\text{(I5)}
 ```
 
 is a mixture of even Gaussian unitaries. Indeed, each $`W_E`$ is a product of pair-Majorana rotations because
@@ -138,9 +142,9 @@ The twirl has the exact form
 
 ```math
 \mathcal T_m(X)
-=\frac{I}{2^m}\operatorname{Tr}X
-+\frac{P_m}{2^m}\operatorname{Tr}(P_mX).
-\tag{I6}
+=\frac{I}{2^m}\mathrm{Tr}X
++\frac{P_m}{2^m}\mathrm{Tr}(P_mX).
+\qquad\text{(I6)}
 ```
 
 To see this directly, expand $`X`$ in the orthogonal Majorana-monomial basis. Conjugating a monomial $`W_F`$ by an even monomial $`W_E`$ multiplies it by $`(-1)^{|E\cap F|}`$. Averaging this character over all even subsets gives zero unless $`F`$ is empty or contains all $`2m`$ indices. These two surviving monomials are $`I`$ and $`P_m`$, up to phase. Their squared Hilbert–Schmidt norms are $`2^m`$, which gives (I6). This also proves the claim for $`m=1`$.
@@ -148,30 +152,32 @@ To see this directly, expand $`X`$ in the orthogonal Majorana-monomial basis. Co
 Applying (I6) to the system factor of an arbitrary joint state gives
 
 ```math
-(\mathcal T_m\otimes\operatorname{id}_R)(\rho_{AR})
-=\frac{I_A}{2^m}\otimes\rho_R
-+\frac{P_m}{2^m}\otimes\Delta_R,
-\qquad
-\Delta_R=\operatorname{Tr}_A[(P_m\otimes I_R)\rho_{AR}].
-\tag{I7}
+\begin{aligned}
+&(\mathcal T_m\otimes\mathrm{id}_R)(\rho_{AR})\\
+&\quad=\frac{I_A}{2^m}\otimes\rho_R
++\frac{P_m}{2^m}\otimes\Delta_R,\\
+&\Delta_R=\mathrm{Tr}_A[(P_m\otimes I_R)\rho_{AR}].
+\qquad\text{(I7)}
+\end{aligned}
 ```
 
 Let $`\Pi_\pm=(I\pm P_m)/2`$, and set
 
 ```math
 \rho_R^\pm=
-\operatorname{Tr}_A[
+\mathrm{Tr}_A[
 (\Pi_\pm\otimes I_R)\rho_{AR}(\Pi_\pm\otimes I_R)].
 ```
 
 These operators are positive, $`\rho_R^++\rho_R^-=\rho_R`$, and
 
 ```math
-\Delta_R=\rho_R^+-\rho_R^-,
-\qquad
-\|\Delta_R\|_1\le
-\operatorname{Tr}\rho_R^++\operatorname{Tr}\rho_R^-=1.
-\tag{I8}
+\begin{aligned}
+\Delta_R&=\rho_R^+-\rho_R^-,\\
+\|\Delta_R\|_1&\le
+\mathrm{Tr}\rho_R^++\mathrm{Tr}\rho_R^-=1.
+\qquad\text{(I8)}
+\end{aligned}
 ```
 
 Thus the surviving coefficient is Hermitian and uniformly bounded even when the input is entangled with $`R`$. The twirl removes within-sector information and cross-parity coherence, but it does not erase the difference between the two parity-sector reference states.
@@ -180,7 +186,7 @@ Equation (I7) describes the averaged channel. The classical twirl seed is not re
 
 ## 3. Finite loss exposure suppresses the remaining parity term
 
-Expose each active mode to the same action $`a>0`$, and write $`q=e^{-a}`$. Denote the resulting ordered composition of single-mode loss channels by $`\mathcal L_q^{(m)}`$. On the occupation-diagonal algebra, the order is immaterial and this composition is independent bit amplitude damping.
+Expose each active mode to the same action $`a\gt 0`$, and write $`q=e^{-a}`$. Denote the resulting ordered composition of single-mode loss channels by $`\mathcal L_q^{(m)}`$. On the occupation-diagonal algebra, the order is immaterial and this composition is independent bit amplitude damping.
 
 For completeness, a diagonal system-reference state can be written
 
@@ -194,32 +200,36 @@ When a jump $`c_j`$ acts on $`|x\rangle`$, its Jordan–Wigner sign appears once
 For a single occupation bit,
 
 ```math
-\operatorname{AD}_q(I/2)=\sigma_q
-=\begin{pmatrix}1-q/2&0\\0&q/2\end{pmatrix},
-\qquad
-\operatorname{AD}_q(Z)=qZ.
+\begin{aligned}
+\mathrm{AD}_q(I/2)&=\sigma_q
+=\begin{pmatrix}1-q/2&0\\0&q/2\end{pmatrix},\\
+\mathrm{AD}_q(Z)&=qZ.
+\end{aligned}
 ```
 
 Both terms in (I7) lie in this diagonal algebra. Therefore the exact joint output is
 
 ```math
-(\mathcal L_q^{(m)}\mathcal T_m\otimes\operatorname{id}_R)(\rho_{AR})
-=\sigma_q^{\otimes m}\otimes\rho_R
+\begin{aligned}
+&(\mathcal L_q^{(m)}\mathcal T_m\otimes\mathrm{id}_R)(\rho_{AR})\\
+&\quad=\sigma_q^{\otimes m}\otimes\rho_R
 +\frac{q^mP_m}{2^m}\otimes\Delta_R.
-\tag{I9}
+\qquad\text{(I9)}
+\end{aligned}
 ```
 
 Using $`\|P_m\|_1=2^m`$, its distance from the independent biased-block comparison state obeys
 
 ```math
-D\!\left(
-(\mathcal L_q^{(m)}\mathcal T_m\otimes\operatorname{id}_R)(\rho_{AR}),
+\begin{aligned}
+&D\!\left(
+(\mathcal L_q^{(m)}\mathcal T_m\otimes\mathrm{id}_R)(\rho_{AR}),
 \sigma_q^{\otimes m}\otimes\rho_R
-\right)
-\le\frac{q^m}{2},
-\qquad
-D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
-\tag{I10}
+\right)\\
+&\quad\le\frac{q^m}{2},\\
+&D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
+\qquad\text{(I10)}
+\end{aligned}
 ```
 
 The loss action for this step is exactly $`ma=m\ln(1/q)`$. Routing all modes through one port realizes it without a second dissipative resource.
@@ -230,17 +240,17 @@ The following stage estimate allows size-dependent choices of the bias and thres
 
 ### Lemma I1: one compression stage
 
-Choose $`0<q<1`$, put $`p=q/2`$, and choose $`p<r<1/2`$. Let
+Choose $`0\lt q\lt 1`$, put $`p=q/2`$, and choose $`p\lt r\lt 1/2`$. Let
 
 ```math
 m'=\lceil m h_2(r)\rceil+1
 ```
 
-and suppose $`m'<m`$. There is a parity-preserving basis permutation $`U_{m,r}`$ such that, for every input $`\rho_{AR}`$, the channel
+and suppose $`m'\lt m`$. There is a parity-preserving basis permutation $`U_{m,r}`$ such that, for every input $`\rho_{AR}`$, the channel
 
 ```math
 \mathcal S_{m,q,r}
-=\operatorname{Ad}_{U_{m,r}}\circ
+=\mathrm{Ad}_{U_{m,r}}\circ
 \mathcal L_q^{(m)}\circ\mathcal T_m
 ```
 
@@ -249,7 +259,7 @@ has an output within distance
 ```math
 e(m,q,r)
 =e^{-2m(r-p)^2}+\frac{q^m}{2}
-\tag{I11}
+\qquad\text{(I11)}
 ```
 
 of a state
@@ -258,7 +268,7 @@ of a state
 |0\rangle\langle0|^{\otimes(m-m')}\otimes\eta_{A'R},
 \qquad
 \eta_R=\rho_R.
-\tag{I12}
+\qquad\text{(I12)}
 ```
 
 It uses action $`m\ln(1/q)`$. The permutation and exposure times depend on $`m,q,r`$, and not on the input or any measurement outcome.
@@ -278,7 +288,7 @@ Its cardinality obeys
 |T_{m,r}|
 =\sum_{j=0}^{\lfloor rm\rfloor}\binom mj
 \le2^{m h_2(r)}.
-\tag{I13}
+\qquad\text{(I13)}
 ```
 
 One proof uses the binomial distribution of parameter $`r`$. For every $`j\le rm`$, monotonicity in $`j`$ gives
@@ -295,7 +305,7 @@ Each parity sector of $`m'`$ modes contains $`2^{m'-1}`$ occupation strings. By 
 
 ```math
 2^{m'-1}\ge2^{m h_2(r)}\ge|T_{m,r}|.
-\tag{I14}
+\qquad\text{(I14)}
 ```
 
 There is consequently enough space to inject the even good strings into
@@ -305,13 +315,13 @@ The extra one trash mode in $`m'=\lceil m h_2(r)\rceil+1`$ supplies the separate
 
 #### Probability of the excluded strings
 
-In the comparison state $`\sigma_q^{\otimes m}`$, occupation bits are independent Bernoulli variables of parameter $`p`$. For $`X\sim\operatorname{Bin}(m,p)`$,
+In the comparison state $`\sigma_q^{\otimes m}`$, occupation bits are independent Bernoulli variables of parameter $`p`$. For $`X\sim\mathrm{Bin}(m,p)`$,
 
 ```math
-\Pr[X>\lfloor rm\rfloor]
-=\Pr[X>rm]
+\Pr[X\gt \lfloor rm\rfloor]
+=\Pr[X\gt rm]
 \le e^{-2m(r-p)^2}.
-\tag{I15}
+\qquad\text{(I15)}
 ```
 
 The last inequality is the bounded-variable concentration bound of [Hoeffding, Theorem 2](https://doi.org/10.1080/01621459.1963.10500830). The equality of the two events uses that $`X`$ is integer-valued.
@@ -328,7 +338,7 @@ Define the analytical prefix replacement map
 
 ```math
 \mathcal Q_B(\theta_{BZ})
-=|0\rangle\langle0|_B\otimes\operatorname{Tr}_B\theta_{BZ}.
+=|0\rangle\langle0|_B\otimes\mathrm{Tr}_B\theta_{BZ}.
 ```
 
 The difference $`\theta-\mathcal Q_B(\theta)`$ has block
@@ -336,9 +346,9 @@ $`-\sum_{b\ne0}C_b`$ at $`b=0`$, and block $`C_b`$ at each $`b\ne0`$. Its blocks
 
 ```math
 D(\theta,\mathcal Q_B(\theta))
-=\sum_{b\ne0}\operatorname{Tr}C_b
+=\sum_{b\ne0}\mathrm{Tr}C_b
 =\Pr_\theta[B\ne0].
-\tag{I16}
+\qquad\text{(I16)}
 ```
 
 This is an exact joint-state identity; no assumption that $`Z`$ is classical, independent, or unentangled is used.
@@ -353,11 +363,13 @@ Apply it to
 The probability of a nonzero cold prefix is at most the excluded probability in (I15), because every good string was sent to a zero prefix. Equation (I10), unitary invariance of trace distance, and the triangle inequality then give
 
 ```math
-D\!\left(
-(\mathcal S_{m,q,r}\otimes\operatorname{id}_R)(\rho_{AR}),
+\begin{aligned}
+&D\!\left(
+(\mathcal S_{m,q,r}\otimes\mathrm{id}_R)(\rho_{AR}),
 \mathcal Q_B(\theta_{AR})
-\right)
-\le\frac{q^m}{2}+e^{-2m(r-p)^2}.
+\right)\\
+&\quad\le\frac{q^m}{2}+e^{-2m(r-p)^2}.
+\end{aligned}
 ```
 
 The comparison state $`\mathcal Q_B(\theta)`$ has the form (I12) and preserves $`\rho_R`$. This proves the lemma. The map $`\mathcal Q_B`$ is used only to compare states in the proof; it is not a physical operation supplied to the protocol.
@@ -377,23 +389,23 @@ Each stage costs $`m\ln4`$ and incurs at most
 
 ```math
 e_m=e^{-m/32}+\frac{4^{-m}}2.
-\tag{I17}
+\qquad\text{(I17)}
 ```
 
 If $`m\ge24`$, then
 
 ```math
-m'\le hm+2\le\alpha m<m.
-\tag{I18}
+m'\le hm+2\le\alpha m\lt m.
+\qquad\text{(I18)}
 ```
 
-For the middle inequality it is enough that $`m\ge4/(1-h)`$. The exact value $`h=2-\tfrac34\log_2 3<5/6`$ shows that $`m\ge24`$ suffices.
+For the middle inequality it is enough that $`m\ge4/(1-h)`$. The exact value $`h=2-\tfrac34\log_2 3\lt 5/6`$ shows that $`m\ge24`$ suffices.
 
 Set $`m_0=n`$. While $`m_j\ge M_\epsilon`$, apply the stage to the active block and set
 
 ```math
 m_{j+1}=\lceil hm_j\rceil+1.
-\tag{I19}
+\qquad\text{(I19)}
 ```
 
 Freeze its zero-prefix comparison modes and continue only on the remaining $`m_{j+1}`$ modes. All sizes, stopping decisions and dwell times are fixed before execution from $`n,\epsilon`$. No observed outcome changes the schedule.
@@ -426,7 +438,7 @@ The next physical stage contracts the previous error. On $`\widehat\rho_j`$, the
 ```math
 E_{j+1}\le E_j+e_{m_j},
 \qquad E_0=0.
-\tag{I20}
+\qquad\text{(I20)}
 ```
 
 The induction permits arbitrary correlations between the active block and the reference. Already compressed modes are retained in the output and are not used as an additional pure computational workspace. Their replacement by exact zeros occurs only in the comparison state.
@@ -438,32 +450,36 @@ The induction permits arbitrary correlations between the active block and the re
 The active sizes decrease strictly, so each integer at least $`M_\epsilon`$ occurs at most once. Equations (I17)–(I20) give
 
 ```math
+\begin{aligned}
 E_{\rm stages}
-\le
+&\le
 \sum_{m=M_\epsilon}^{\infty}
-\left(e^{-m/32}+\frac{4^{-m}}2\right)
-=
+\left(e^{-m/32}+\frac{4^{-m}}2\right)\\
+&=
 \frac{e^{-M_\epsilon/32}}{1-e^{-1/32}}
 +\frac23\,4^{-M_\epsilon}.
-\tag{I21}
+\qquad\text{(I21)}
+\end{aligned}
 ```
 
 The choice of $`M_\epsilon`$ implies $`e^{-M_\epsilon/32}\le\epsilon/256`$. Also $`e^{1/32}\ge33/32`$, so
-$`(1-e^{-1/32})^{-1}\le33`$. Since $`\ln4>1/32`$, one has $`4^{-M_\epsilon}\le e^{-M_\epsilon/32}`$. Thus
+$`(1-e^{-1/32})^{-1}\le33`$. Since $`\ln4\gt 1/32`$, one has $`4^{-M_\epsilon}\le e^{-M_\epsilon/32}`$. Thus
 
 ```math
+\begin{aligned}
 E_{\rm stages}
-\le\frac{33\epsilon}{256}+\frac{\epsilon}{384}
-=\frac{101}{768}\epsilon
-<\frac{\epsilon}{2}.
-\tag{I22}
+&\le\frac{33\epsilon}{256}+\frac{\epsilon}{384}\\
+&=\frac{101}{768}\epsilon
+\lt \frac{\epsilon}{2}.
+\qquad\text{(I22)}
+\end{aligned}
 ```
 
 All constants here are analytical, including the floors and ceilings in the schedule.
 
 ### Cleanup of the last active block
 
-The process terminates at an active size $`m_f<M_\epsilon`$. Twirl this remaining block and expose each of its modes to survival probability
+The process terminates at an active size $`m_f\lt M_\epsilon`$. Twirl this remaining block and expose each of its modes to survival probability
 
 ```math
 q_f=\frac{\epsilon}{2M_\epsilon}.
@@ -472,18 +488,20 @@ q_f=\frac{\epsilon}{2M_\epsilon}.
 The twirled state is diagonal on the active modes, with positive operator-valued reference coefficients. For any occupation string, the probability of at least one surviving excitation is at most $`m_fq_f`$, by a union bound over its occupied positions. Averaging over the reference coefficients preserves this inequality. The exact probability-to-distance identity (I16), now with the entire active block as $`B`$, gives
 
 ```math
-D\!\left(
+\begin{aligned}
+&D\!\left(
 \omega_{A_fR},
 |\Omega_{m_f}\rangle\langle\Omega_{m_f}|\otimes\rho_R
-\right)
-\le m_fq_f
+\right)\\
+&\quad\le m_fq_f
 \le\frac{\epsilon}{2}.
-\tag{I23}
+\qquad\text{(I23)}
+\end{aligned}
 ```
 
 The same contraction argument handles the previously accumulated error on the frozen modes. Equations (I22) and (I23) prove (I1) for every reference.
 
-If $`n<M_\epsilon`$, no compression stage is run: this final twirl-and-loss protocol alone supplies the claimed guarantee. The construction therefore covers every $`n\ge1`$, not only the asymptotic regime.
+If $`n\lt M_\epsilon`$, no compression stage is run: this final twirl-and-loss protocol alone supplies the claimed guarantee. The construction therefore covers every $`n\ge1`$, not only the asymptotic regime.
 
 ### Pathwise action accounting
 
@@ -493,7 +511,7 @@ Equation (I18) implies $`m_j\le\alpha^j n`$, and hence
 A_{\rm stages}
 =(\ln4)\sum_jm_j
 \le\frac{\ln4}{1-\alpha}\,n.
-\tag{I24}
+\qquad\text{(I24)}
 ```
 
 The last block costs
@@ -502,7 +520,7 @@ The last block costs
 A_{\rm final}
 =m_f\ln\frac1{q_f}
 \le M_\epsilon\ln\frac{2M_\epsilon}{\epsilon}.
-\tag{I25}
+\qquad\text{(I25)}
 ```
 
 This proves (I2). The random twirl choices change neither the $`m_j`$, the compression permutations nor the dwell times. Every branch consequently obeys the same bound; an expected-action budget is not being substituted for a strict cap.
@@ -514,10 +532,12 @@ The lower bound uses only the largest eigenvalue and the normalized loss strengt
 Let $`\rho(t)`$ obey
 
 ```math
-\dot\rho=-i[H(t),\rho]
-+\kappa(t)\left(
+\begin{aligned}
+\dot\rho&=-i[H(t),\rho]\\
+&\quad+\kappa(t)\left(
 c_1\rho c_1^\dagger-\frac12\{c_1^\dagger c_1,\rho\}
 \right),
+\end{aligned}
 ```
 
 and set $`\lambda(t)=\lambda_{\max}(\rho(t))`$. At a differentiability point, the upper directional derivative of the largest eigenvalue is the maximum of
@@ -537,8 +557,8 @@ For every such vector, $`\rho v=\lambda v`$, so the Hamiltonian contribution van
 &=
 \kappa\lambda\langle v|(I-2c_1^\dagger c_1)|v\rangle
 \le\kappa\lambda .
+\qquad\text{(I26)}
 \end{aligned}
-\tag{I26}
 ```
 
 Thus the upper Dini derivative obeys $`D^+\lambda\le\kappa\lambda`$ on differentiable dynamical segments. For locally integrable coefficients, $`\rho`$ and its largest eigenvalue are absolutely continuous, the inequality holds almost everywhere, and integration gives
@@ -546,7 +566,7 @@ Thus the upper Dini derivative obeys $`D^+\lambda\le\kappa\lambda`$ on different
 ```math
 \lambda_{\max}(\rho(T))
 \le e^A\lambda_{\max}(\rho(0)).
-\tag{I27}
+\qquad\text{(I27)}
 ```
 
 Instantaneous unitary pulses preserve $`\lambda_{\max}`$, so they do not alter the bound. The argument also persists under limits of piecewise controls. In particular it allows arbitrary parity-preserving coherent interactions, and even remains valid if that coherent restriction is removed.
@@ -556,10 +576,12 @@ For a randomized protocol, condition on its complete input-independent classical
 Use the maximally mixed input $`\rho(0)=I/2^n`$. Then
 
 ```math
+\begin{aligned}
 \langle\Omega_n|\Phi(I/2^n)|\Omega_n\rangle
-\le\lambda_{\max}(\Phi(I/2^n))
-\le2^{-n}e^A.
-\tag{I28}
+&\le\lambda_{\max}(\Phi(I/2^n))\\
+&\le2^{-n}e^A.
+\qquad\text{(I28)}
+\end{aligned}
 ```
 
 If $`d_{\rm reset}(\Phi)\le\epsilon`$, the vacuum measurement on this particular input must succeed with probability at least $`1-\epsilon`$. Therefore
@@ -579,14 +601,14 @@ Its distance to vacuum replacement is bounded by
 
 ```math
 \begin{aligned}
-D(\omega_{SR},
-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R)
-&\le
+&D(\omega_{SR},
+|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R)\\
+&\quad\le
 1-(1-q/2)^n+\frac{q^n}{2}\\
-&\le\frac{nq}{2}+\frac{q^n}{2}
+&\quad\le\frac{nq}{2}+\frac{q^n}{2}
 \le nq .
+\qquad\text{(I29)}
 \end{aligned}
-\tag{I29}
 ```
 
 Choose $`q=\epsilon/n`$, which lies in $`(0,1)`$. The resulting Gaussian protocol has
@@ -595,7 +617,7 @@ Choose $`q=\epsilon/n`$, which lies in $`(0,1)`$. The resulting Gaussian protoco
 d_{\rm reset}(\Phi_{\rm G})\le\epsilon,
 \qquad
 A_{\rm G}\le n\ln\frac n\epsilon.
-\tag{I30}
+\qquad\text{(I30)}
 ```
 
 Every conditioned branch is Gaussian. The average of those branches need not send a Gaussian input to a Gaussian state, which is why the model specifies mixtures of Gaussian control protocols explicitly.

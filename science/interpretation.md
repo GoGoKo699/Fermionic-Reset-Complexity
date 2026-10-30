@@ -2,7 +2,7 @@
 
 Quadratic control cannot remove the logarithmic overhead of resetting a large fermionic register to fixed global accuracy. Interacting control can remove it by concentrating the remaining uncertainty into progressively fewer modes. The comparison uses the same vacuum-loss port, the same classical randomization, and the same requirement to reset every retained mode.
 
-At fixed $`0<\epsilon<1`$, the optimal dissipative actions are
+At fixed $`0\lt \epsilon\lt 1`$, the optimal dissipative actions are
 
 ```math
 A_{\rm G}(n,\epsilon)=\Theta_\epsilon(n\ln n),

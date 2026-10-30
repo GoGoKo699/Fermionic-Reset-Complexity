@@ -14,9 +14,13 @@ The central question is the total Markovian damping action needed to reset an en
 - Closest external and internal scientific comparisons: references/RELATED_WORK.md; bibliography: references/references.bib.
 - Numerical reproduction and what the checks establish: verification/README.md.
 - Figure source: verification/plot_action_scaling.py; certified finite plans: verification/finite_protocol.py.
+- Educational anchor: John Watrous, The Theory of Quantum Information (2018); precise source bridge and notation translation: learning/WATROUS_BRIDGE.md.
+- Shared learning route: learning/MILESTONES.md, exactly 30 project-defined understanding targets with earlier dependencies, conceptual connections and source pointers.
 
 ## Essential distinctions
 
 The exact formula F_G(n,A)=[1-exp(-A/n)/2]^n is for vacuum preparation from I/2^n. It is a necessary witness for universal reset, not an exact finite-action solution of that channel optimization. The Gaussian state cost is A_G^tau; the universal cost is A_G. All randomized branches satisfy the action cap. Their average need not be Gaussian. The interacting finite-size curves are achievable bounds, not the finite optimum. Coherent synthesis, locality and gate time are unpriced. Classical randomization supplies unital averaging and its record is ignored at the output. The ordinary matrix-algebra half-diamond guarantee includes arbitrary references.
 
 The public repository owns the scientific statements and reproducibility materials. Bibliographic claims and inherited proof ingredients are documented in references/RELATED_WORK.md.
+
+The learning map is independent of any reader's assessment history. Use its dependencies and canonical scientific sources to explain the argument; the bridge identifies which ingredients come from Watrous and which require the repository's own derivations or cited primary research.
