@@ -55,7 +55,7 @@ This conditional bound gives a coupling to $`M`$ independent Bernoulli trials of
 
 ```math
 A=kMa,\qquad
-\epsilon_{\rm I}^*(n,kMa)\le\Pr\{\mathrm{Bin}(M,1-e^{-a})<r\}.
+\epsilon_{\rm I}^*(n,kMa)\le\Pr\{\mathrm{Bin}(M,1-e^{-a})\lt r\}.
 ```
 
 For instance, $`a=\ln 2`$ gives $`\mathbb E[2^{-\mathrm{Bin}(M,1/2)}]=(3/4)^M`$. The error is at most $`2^r(3/4)^M`$. With $`b=2`$, we can use $`r=n`$ and take
@@ -115,14 +115,10 @@ For $`n\ge2`$ and $`0<\epsilon\le1/2`$, the first term is at least $`(n/2)\ln 2`
 
 Label the $`2m`$ cycle vertices $`0,\ldots,2m-1`$ with alternating parities, beginning with vacuum at $`0`$. Both paths of length $`m`$ from the even vertex $`m`$ to $`0`$ are oriented from $`m`$ toward $`0`$. Color the edges alternately with two colors. Each color is a directed perfect matching. On the path from vertex $`m`$ through vertex $`1`$, an edge with consecutive labels $`j,j+1`$ has donor $`j+1`$. On the other path, with labels taken modulo $`2m`$, the donor is $`j`$. Each path has $`m/2`$ edges of either color, and the same color has donors of opposite parity on the two paths. Both colors are therefore balanced and realizable with the same port.
 
-Rank is the cycle distance to vacuum. Every transfer lowers rank by one, and each nonvacuum vertex has a downward edge among the two contacts. Prepend occupation dephasing and repeat both colors for $`M`$ sweeps with fixed action $`a>0`$ per contact. The preceding sweep argument gives
+Rank is the cycle distance to vacuum. Every transfer lowers rank by one, and each nonvacuum vertex has a downward edge among the two contacts. Prepend occupation dephasing and repeat both colors for $`M`$ sweeps with fixed action $`a>0`$ per contact. Let $`B\sim\mathrm{Bin}(M,1-e^{-a})`$. The sweep argument gives
 
 ```math
-\begin{aligned}
-\epsilon_{\rm I}^*(n,2Ma)
-&\le \Pr\{\mathrm{Bin}(M,1-e^{-a})<m\} \\
-&= e^{-Ma}\sum_{j=0}^{m-1}\binom{M}{j}(e^a-1)^j.
-\end{aligned}
+\epsilon_{\rm I}^*(n,2Ma)\le\Pr(B\lt m)=e^{-Ma}\sum_{j=0}^{m-1}\binom{M}{j}(e^a-1)^j.
 ```
 
 The binomial coefficient is zero for $`j>M`$. At fixed $`n`$ and $`a`$, the sum is at most polynomial in $`M`$ of degree $`m-1`$. For a general cap $`A`$, choose $`M=\lfloor A/(2a)\rfloor`$, so the achievable error is $`O_{n,a}(A^{m-1}e^{-A/2})`$ as $`A\to\infty`$. The no-jump converse matches the exponent. The cycle depth grows exponentially with $`n`$, which is why the previous section uses the tree for a bound uniform in size and error.
