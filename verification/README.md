@@ -1,6 +1,6 @@
 # Reproduce the finite checks and action comparison
 
-This directory checks conventions, finite matrix identities, and the explicit action certificates used in the accompanying proofs. The universal statements are analytical: see the [Gaussian bound](../science/gaussian_bound.md), [interacting reset proof](../science/interacting_reset.md), and [finite-size construction](../science/finite_size.md). Numerical examples do not establish the bounds for arbitrary controls, inputs, references, or register sizes.
+This directory checks conventions, finite matrix identities, and the explicit action certificates used in the accompanying proofs. The universal statements are analytical: see the [universal frontier](../science/universal-frontier.md), [interacting frontier](../science/interacting-frontier.md), and [finite-size compression certificate](../science/finite_size.md). Numerical examples do not establish the bounds for arbitrary controls, inputs, references, or register sizes.
 
 ## Environment and commands
 
@@ -13,6 +13,7 @@ Run the five scripts with ordinary Python so that their assertions remain enable
     python verification/gaussian_hilbert_conventions.py
     python verification/check_gaussian_action.py
     python verification/check_reference_twirl.py
+    python verification/check_reset_frontier.py
     python verification/finite_protocol.py
     python verification/plot_action_scaling.py
 
@@ -25,29 +26,22 @@ Each script creates its output directory as needed. JSON results are written und
 | [Hilbert-space conventions](gaussian_hilbert_conventions.py) | Nine one-, two-, and three-mode examples compare full Jordan–Wigner GKSL evolution with the affine covariance equation. They include general linear jumps, uniform losses, and gain plus a Hermitian Majorana jump. The checks also compare the actual density-matrix largest eigenvalue with the Gaussian spectral formula and verify uniform-loss saturation. Tolerance: 1e-10. | [Conventions JSON](results/gaussian_hilbert_conventions.json) |
 | [Gaussian action](check_gaussian_action.py) | For n = 1, 2, 3, 5, integrate 100 piecewise-constant segments for both general linear jumps and a rotated single-loss port, with arbitrary quadratic drift. Check the log-defect inequality and largest-eigenvalue bound at every segment, then verify four uniform-loss saturation cases. Tolerance: 1e-9. | [Action JSON](results/gaussian_action.json) |
 | [Reference twirl and parity](check_reference_twirl.py) | For one through four modes and a reference qubit, check the even-Majorana twirl and the subsequent loss identity on fixed-seed joint density matrices. Also check parity-embedding capacities and contraction for integer active sizes 24 through 999, plus the explicit cutoff inequalities at five target errors. Matrix-identity tolerance: 2e-12. | [Twirl JSON](results/reference_twirl.json) |
+| [Reset frontiers](check_reset_frontier.py) | Dense parity evolution and reference trace norms, matching balance, finite sweep tails, and rational three-mode separation. | [Frontier JSON](results/reset_frontier.json) |
 | [Finite schedules](finite_protocol.py) | Evaluate the deterministic, size-dependent compression schedule and its analytic error/action bounds. The default run covers seven register sizes from 64 to one million modes, plus 12 small-register or high-accuracy cases. It checks threshold rounding, stage error budgets, cleanup, and the total error certificate. These large-register evaluations manipulate formulas and integer schedules; they do not simulate the full many-body state. | [Protocol JSON](results/finite_protocol.json) |
-| [Action-scaling figure](plot_action_scaling.py) | Evaluate the same finite protocol over the plotted register-size grid at global half-diamond error epsilon = 0.1, check the displayed lower/upper-bound order, and plot action per mode. It imports the protocol calculation directly instead of copying its formulas. | [Scaling JSON](results/scaling_series.json) and [figure](figures/action_scaling.svg) |
+| [Action-scaling figure](plot_action_scaling.py) | Evaluate the exact Gaussian action, the finite mirrored-tree and compression certificates, and the joint interacting converse at global half-diamond error 0.1. Check lower and upper ordering and plot action per mode. | [Scaling JSON](results/scaling_series.json) and [figure](figures/action_scaling.svg) |
 
 The matrix-exponential steps evaluate the stated finite-dimensional generators in floating-point arithmetic. The certificate and plotting scripts also use floating-point functions; they are not interval-arithmetic proofs or searches over all admissible controllers.
 
-## Keep the bounds distinct
+## What the plotted curves represent
 
-The exact Gaussian state-preparation frontier is
-
-```math
-F_{\mathrm G}(n,A)=\left(1-\frac12e^{-A/n}\right)^n.
-```
-It starts from the maximally mixed input. Its inverse, $`A_{\mathrm G}^{\tau}(n,\epsilon)`$, is the exact action needed for that selected-input task and a lower bound for universal Gaussian reset. The scripts' gaussian_witness_lower field refers to this witness. It is not an exact finite-action universal-reset optimum.
-
-The universal Gaussian construction supplies the achievable upper bound $`n\ln(n/\epsilon)`$. The Gaussian shaded region in the figure lies between this construction and the maximally mixed-input witness. Reference correlations are included in the proof of the construction.
-
-The interacting_certified_upper field is the smaller action of two explicitly available universal protocols: the size-dependent compression protocol and the Gaussian universal construction. The selected protocol's name and error bound are reported with it. This is an attainable interacting upper bound, not an optimized interacting action. The general spectral lower bound,
+The Gaussian line evaluates the inverse, in $`A`$, of the exact channel error:
 
 ```math
-\max\{0,n\ln2+\ln(1-\epsilon)\},
+r_{\rm G}(n,A)=1-(1-e^{-A/n}/2)^n+2^{-n}e^{-A}.
 ```
-applies to arbitrary allowed coherent control. It need not meet the constructive interacting upper bound at finite size.
 
-In the finite-protocol report, compression_error_bound sums the allocated analytical stage budgets and the final cleanup budget $`\epsilon/2`$. The selected_protocol_error_bound refers to the chosen construction: it equals $`\epsilon`$ for the Gaussian fallback and the compression budget otherwise. The separate tail and residue evaluation fields are floating-point diagnostics; log_parity_residue retains the logarithm when a displayed residue underflows. An evaluated zero is not a certificate of exactly zero error.
+The interacting upper line selects the least action among three available guarantees: Gaussian equal exposure, mirrored-tree sweeps with a binomial certificate, and entropy compression. The lower line uses the larger of the spectral inflow and odd-parity no-jump bounds. The region between the interacting curves includes the unknown finite-action optimum.
 
-The fixed-error orders $`A_{\mathrm G}=\Theta_\epsilon(n\ln n)`$ and $`A_{\mathrm I}=\Theta_\epsilon(n)`$ follow from the analytical converses and constructions. The finite reports illustrate and check their implementation. They do not establish an optimal interacting coefficient, a sharp joint dependence on $`n`$ and $`\epsilon`$, or a bound on coherent gate synthesis, locality, or hardware duration.
+The compression examples retain the report's field names. There, gaussian_witness_lower refers to the $`I/2^n`$ state witness, gaussian_universal_upper to the simple Gaussian channel construction, and interacting_certified_upper to the smaller action of compression and that construction. The allocated stage budgets and final cleanup determine the compression error certificate. Tiny numerical residues can underflow.
+
+The exact Gaussian error, joint action laws and fixed-size decay exponents follow from the analytical arguments. The finite checks support the rate conventions, rank calculations and explicit examples.

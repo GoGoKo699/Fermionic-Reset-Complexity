@@ -25,10 +25,10 @@ For a channel $`\Phi`$ define
 ```math
 \begin{aligned}
 d_{\rm reset}(\Phi)
-&=\frac12\|\Phi-\mathcal R_n\|_\diamond\\
-&=\sup_{\rho_{AR}}\frac12\left\|
+&=\frac12\lVert \Phi-\mathcal R_n\rVert_\diamond\\
+&=\sup_{\rho_{AR}}\frac12\left\lVert
 (\Phi\otimes\mathrm{id}_R)(\rho_{AR})
--|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R\right\|_1.
+-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R\right\rVert_1.
 \end{aligned}
 ```
 
@@ -117,32 +117,22 @@ A_{\rm G}^{\tau}(n,\epsilon)
 =n\ln\frac{1}{2[1-(1-\epsilon)^{1/n}]}.
 ```
 
-For looser errors the state-preparation action is zero. Universal reset is constrained by this witness, but its finite-action optimum is not identified by that equality. The [universal constructions and converse](interacting_reset.md) prove
+For looser errors the state-preparation action is zero. The [exact universal frontier](universal-frontier.md) accounts for the odd-parity witness. At loss-action cap $`A`$, the optimal half-diamond error is
 
 ```math
-\max\{0,A_{\rm G}^{\tau}(n,\epsilon)\}
-\leq A_{\rm G}(n,\epsilon)
-\leq n\ln\frac{n}{\epsilon},
+r_{\rm G}(n,A)=1-F_{\rm G}(n,A)+2^{-n}e^{-A}.
 ```
 
-where the witness expression is interpreted as zero outside its positive domain, and
+For each $`0<\epsilon<1`$, $`A_{\rm G}(n,\epsilon)`$ is the unique action with $`r_{\rm G}(n,A)=\epsilon`$. For $`n\ge2`$ and $`0<\epsilon\le1/2`$, there are uniform action laws
 
 ```math
-\max\{0,n\ln2+\ln(1-\epsilon)\}
-\leq A_{\rm I}(n,\epsilon)
-\leq Cn+C_\epsilon,
-\qquad C\lt 14.692.
+A_{\rm G}(n,\epsilon)=\Theta(n\ln(n/\epsilon)),
+\qquad
+A_{\rm I}(n,\epsilon)=\Theta(n+\ln(1/\epsilon)).
 ```
 
-Consequently, at each fixed global error,
-
-```math
-A_{\rm G}(n,\epsilon)=\Theta_\epsilon(n\ln n),\qquad
-A_{\rm I}(n,\epsilon)=\Theta_\epsilon(n).
-```
-
-The [finite-size protocol](finite_size.md) improves the explicit achievable constant and supplies concrete action certificates. No optimal leading interacting constant or uniform optimal joint dependence on $`n`$ and $`\epsilon`$ is claimed.
+The [interacting proof](interacting-frontier.md) gives a finite schedule and the lower bound $`A_{\rm I}\ge\max\{n\ln2+\ln(1-\epsilon),2\ln(1/\epsilon)\}`$. At each fixed $`n\ge2`$, define the high-action exponent by $`\lim_{A\to\infty}[-\ln r(n,A)]/A`$, where $`r(n,A)`$ is the optimal error at budget $`A`$. The exponent equals $`1/n`$ for Gaussian and $`1/2`$ for interacting control. The exact interacting value for $`n\ge3`$ remains open. At one and two modes both classes have the same exact Gaussian error.
 
 ## Reading the result
 
-Quadratic control can rotate and redistribute Gaussian occupation defects, but complete positivity limits their product at a fixed action. Global vacuum accuracy forces each of many defects to become small. Interacting permutations instead concentrate residual uncertainty into fewer active modes, so successive cooling stages act on a shrinking register. The [interpretation](interpretation.md) explains this mechanism and the resource boundaries; the two proof pages supply its exact statements.
+Quadratic control can rotate and redistribute Gaussian occupation defects, but complete positivity limits their product at a fixed action. Global vacuum accuracy forces each of many defects to become small. Interacting permutations can direct population through balanced matchings toward the vacuum. The [interpretation](interpretation.md) explains that mechanism, the alternative entropy-compression protocol and the resource boundaries.

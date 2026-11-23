@@ -1,6 +1,6 @@
 # Why interactions reduce the damping needed for reset
 
-Quadratic control cannot remove the logarithmic overhead of resetting a large fermionic register to fixed global accuracy. Interacting control can remove it by concentrating the remaining uncertainty into progressively fewer modes. The comparison uses the same vacuum-loss port, the same classical randomization, and the same requirement to reset every retained mode.
+Quadratic control cannot remove the logarithmic overhead of resetting a large fermionic register to fixed global accuracy. Interacting control can remove it by routing occupation populations through parity-preserving matchings. The comparison uses the same vacuum-loss port, the same classical randomization, and the same requirement to reset every retained mode.
 
 At fixed $`0\lt \epsilon\lt 1`$, the optimal dissipative actions are
 
@@ -42,9 +42,15 @@ The largest eigenvalue of the state is $`\prod_j(1-\delta_j/2)`$, which bounds e
 F_{\rm G}(n,A)=\left(1-\frac12e^{-A/n}\right)^n.
 ```
 
-Equal loss exposure attains it. Arbitrarily strong quadratic rotations, pairing, and changes of bath orientation cannot improve this frontier at the same action. The logarithmic overhead therefore persists after optimization over the Gaussian controls; it is not inferred merely from the performance of sequential damping.
+Equal loss exposure attains it. Arbitrarily strong quadratic rotations, pairing, and changes of bath orientation cannot improve this frontier at the same action. The logarithmic overhead therefore persists after optimization over the Gaussian controls. The [universal frontier](universal-frontier.md) adds the exact odd-parity correction for the worst unknown input.
 
-## Interactions concentrate uncertainty into a smaller block
+## Routing population with the loss port
+
+A unitary permutation preserves entropy, but changes which occupation pairs the loss port connects. It can realize an entire opposite-parity matching per contact as long as the donors are balanced between the two sectors. The mirrored-tree construction completes every color to a balanced matching and makes every sweep give a nonvacuum state a fixed chance to move closer to vacuum.
+
+An odd input with no loss jump cannot reach vacuum through parity-preserving control. At least $`e^{-A/2}`$ of the maximally mixed odd input remains in that no-jump branch for $`n\ge2`$. A two-matching cycle attains this exponential rate at fixed size. The [tree and cycle proofs](interacting-frontier.md) distinguish uniform size and precision scaling from the fixed-size high-precision limit.
+
+## Cooling via entropy compression
 
 A reversible unitary does not reduce the entropy of the full register. It can nevertheless change where that entropy is stored. After a constant loss exposure, an active block resembles independent biased occupation bits. Most of its probability lies on a set of strings substantially smaller than the full occupation basis.
 
@@ -58,14 +64,14 @@ This is entropy compression in the tradition of [Schulman and Vazirani](https://
 
 Both classes receive the same input-independent random Gaussian controls. Their average is unital: it fixes the maximally mixed state and cannot supply purification. The universal construction uses an even Majorana twirl to standardize an unknown active block within each parity sector.
 
-The twirl leaves one parity-dependent component, which may remain correlated with the reference. Equal loss with survival $`q`$ on $`m`$ modes suppresses that component by $`q^m`$, permitting comparison with independent biased occupations. The subsequent compression therefore works for an unknown input, rather than only for a preselected thermal state.
+The twirl leaves one parity-dependent component, which may remain correlated with the reference. Equal loss with survival $`q`$ on $`m`$ modes suppresses that component by $`q^m`$, permitting comparison with independent biased occupations. This attenuation controls the error of the compression proof. At the full-register level, parity decay gives the exact offset between the two sector inputs. With vacuum dephasing, the larger sector failure equals the diamond error.
 
 The guarantee concerns the averaged channel after the controller's classical record is ignored. Every realization has the same predetermined sizes and loss exposures. On the converse side, the Gaussian bound holds separately for each realization and survives averaging; the averaged state need not itself be Gaussian.
 
 ## Reading the bounds and their cost
 
-The exact formula $`F_{\rm G}`$ concerns preparation from the specified maximally mixed input. It supplies a lower bound for universal reset. The universal theorem establishes matching asymptotic orders, not an exact finite-action Gaussian channel optimum.
+The mixed-input population $`F_{\rm G}`$ and the universal error obey $`r_{\rm G}=1-F_{\rm G}+2^{-n}e^{-A}`$. The same conversion relates the optimal interacting error to the optimal interacting mixed-input population.
 
-The [finite-size protocol](finite_size.md) gives explicit upper bounds with integer thresholds and a final cleanup cost. Its choice $`q=1/5`$ has an attainable asymptotic coefficient of about $`3.03`$ multiplying $`n`$. The general lower coefficient is $`\ln2`$; this gap remains. The coefficient $`3.03`$ is neither an optimal interacting value nor a replacement for the finite-register certificate. The [verification guide](../verification/README.md) explains the numerical evaluations and their relation to the proofs.
+The [finite-size protocol](finite_size.md) gives an alternative upper bound based on compression. At fixed target error, its example has leading coefficient about 3.03. A mirrored-tree schedule improves the achievable coefficient to 2.5. The general lower coefficient remains $`\ln 2`$. The [verification guide](../verification/README.md) explains the finite calculations.
 
 Action counts the integral of the **sum** of damping rates. Exposing $`n`$ modes simultaneously at rate $`\kappa`$ each costs $`n\kappa t`$, rather than $`\kappa t`$. At a fixed total-rate cap, action sets a lower bound on dissipative exposure time. Coherent routing and nonlinear synthesis remain unpriced in the fast-control model. The hierarchy identifies what interactions can save in dissipative exposure; a hardware-duration comparison must also account for implementing those controls.
