@@ -2,7 +2,7 @@
 
 [Model and resource contract](model.md) · [Finite-size choices](finite_size.md)
 
-An interacting controller can reset the entire unknown register with dissipation action linear in its number of modes. The construction uses the same single vacuum-loss port as the Gaussian comparison, retains every system mode, and works for inputs entangled with an arbitrary reference. It creates a constant occupation bias, reversibly concentrates the remaining uncertainty into a smaller set of modes, and repeats.
+Entropy compression resets the entire unknown register at linear dissipation action for fixed error. The [interacting frontier](interacting-frontier.md) gives a separate finite schedule with sharp joint size and precision scaling. The construction uses the same single vacuum-loss port as the Gaussian comparison, retains every system mode, and works for inputs entangled with an arbitrary reference. It creates a constant occupation bias, reversibly concentrates the remaining uncertainty into a smaller set of modes, and repeats.
 
 Entropy concentration followed by bath-assisted cooling is established algorithmic cooling; see [Boykin et al.](https://arxiv.org/abs/quant-ph/0106093). Controllability with one switchable amplitude-damping qubit is established by [Bergholm, Wilhelm and Schulte-Herbrüggen](https://arxiv.org/pdf/1605.06473v2), including the sequential cooling benchmark in Example 1. The proof here supplies the parity-preserving, reference-uniform construction and counts its total loss action. Its role is to attain the linear side of the Gaussian-versus-interacting reset comparison.
 
@@ -37,18 +37,18 @@ For the vacuum replacement channel
 write
 
 ```math
-d_{\rm reset}(\Phi)=\frac12\|\Phi-\mathcal R_n\|_\diamond.
+d_{\rm reset}(\Phi)=\frac12\lVert \Phi-\mathcal R_n\rVert_\diamond.
 ```
 
 It suffices to prove, for every system-reference state $`\rho_{SR}`$,
 
 ```math
-\frac12\left\|
+\frac12\left\lVert
 \begin{aligned}
 &(\Phi\otimes\mathrm{id}_R)(\rho_{SR})\\
 &\quad-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R
 \end{aligned}
-\right\|_1
+\right\rVert_1
 \le\epsilon.
 \qquad\text{(I1)}
 ```
@@ -174,7 +174,7 @@ These operators are positive, $`\rho_R^++\rho_R^-=\rho_R`$, and
 ```math
 \begin{aligned}
 \Delta_R&=\rho_R^+-\rho_R^-,\\
-\|\Delta_R\|_1&\le
+\lVert \Delta_R\rVert_1&\le
 \mathrm{Tr}\rho_R^++\mathrm{Tr}\rho_R^-=1.
 \qquad\text{(I8)}
 \end{aligned}
@@ -218,7 +218,7 @@ Both terms in (I7) lie in this diagonal algebra. Therefore the exact joint outpu
 \end{aligned}
 ```
 
-Using $`\|P_m\|_1=2^m`$, its distance from the independent biased-block comparison state obeys
+Using $`\lVert P_m\rVert_1=2^m`$, its distance from the independent biased-block comparison state obeys
 
 ```math
 \begin{aligned}
@@ -227,7 +227,7 @@ Using $`\|P_m\|_1=2^m`$, its distance from the independent biased-block comparis
 \sigma_q^{\otimes m}\otimes\rho_R
 \right)\\
 &\quad\le\frac{q^m}{2},\\
-&D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
+&D(\rho,\sigma)=\frac12\lVert \rho-\sigma\rVert_1.
 \qquad\text{(I10)}
 \end{aligned}
 ```
@@ -622,4 +622,4 @@ A_{\rm G}\le n\ln\frac n\epsilon.
 
 Every conditioned branch is Gaussian. The average of those branches need not send a Gaussian input to a Gaussian state, which is why the model specifies mixtures of Gaussian control protocols explicitly.
 
-Equation (I30) is an attainable universal-channel bound. It is not an assertion that this channel is the exact finite-action universal Gaussian optimum. Together with the separately proved maximally mixed-input Gaussian converse, it gives the matching $`\Theta_\epsilon(n\log n)`$ universal action order. Equations (I2)–(I4) show how parity-preserving interacting control removes that logarithmic factor under the same loss and randomization resources.
+Equation (I30) is a simple action certificate. The [universal frontier](universal-frontier.md) gives the exact error of this twirled equal-loss schedule and proves its optimality. The [interacting frontier](interacting-frontier.md) uses the same loss and randomization resources to give the joint size and precision law.

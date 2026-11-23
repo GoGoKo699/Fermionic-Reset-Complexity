@@ -1,7 +1,8 @@
-"""Generate the action comparison directly from the certified finite protocol."""
+"""Compare exact Gaussian action with finite interacting certificates."""
 from __future__ import annotations
 
 import json
+import math
 import os
 from pathlib import Path
 
@@ -11,46 +12,48 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-from finite_protocol import plan
+from finite_protocol import gaussian_reset_action, mirrored_tree_certificate, plan
 
 
 def main() -> None:
     root = Path(__file__).resolve().parent
     sizes = np.unique(np.round(np.geomspace(64, 1_000_000, 190)).astype(int))
     rows = []
+    epsilon = 0.1
     for n in sizes:
-        data = plan(int(n), epsilon=0.1, q=0.2)
-        rows.append({key: data[key] for key in [
-            'n', 'epsilon', 'q', 'gaussian_witness_lower',
-            'gaussian_universal_upper', 'interacting_certified_upper',
-            'general_spectral_lower', 'selected_protocol',
-            'selected_protocol_error_bound']})
-    lower = np.array([x['gaussian_witness_lower']/x['n'] for x in rows])
-    upper = np.array([x['gaussian_universal_upper']/x['n'] for x in rows])
+        n = int(n)
+        gaussian = gaussian_reset_action(n, epsilon)
+        tree = mirrored_tree_certificate(n, epsilon)
+        compression = plan(n, epsilon, q=0.2)
+        certificates = {'equal Gaussian exposure': gaussian,
+                        'mirrored tree': tree['action'],
+                        'entropy compression': compression['compression_action']}
+        selected = min(certificates, key=certificates.get)
+        rows.append({'n': n, 'epsilon': epsilon, 'gaussian_optimal_action': gaussian,
+                     'interacting_certified_upper': certificates[selected],
+                     'interacting_lower': max(compression['general_spectral_lower'],
+                                              -2 * math.log(epsilon)),
+                     'selected_protocol': selected, 'mirrored_tree': tree})
+    gaussian = np.array([x['gaussian_optimal_action']/x['n'] for x in rows])
     interacting = np.array([x['interacting_certified_upper']/x['n'] for x in rows])
-    spectral = np.array([x['general_spectral_lower']/x['n'] for x in rows])
-    if not np.all(lower <= upper+1e-10):
-        raise ArithmeticError('Gaussian lower/upper order failed')
-    if not np.all(spectral <= interacting+1e-10):
+    lower = np.array([x['interacting_lower']/x['n'] for x in rows])
+    if not np.all(lower <= interacting+1e-10):
         raise ArithmeticError('Interacting lower/upper order failed')
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 11,
-                         'svg.fonttype': 'none', 'axes.spines.top': False,
+                         'svg.fonttype': 'none', 'svg.hashsalt': 'fermionic-reset',
+                         'axes.spines.top': False,
                          'axes.spines.right': False})
     fig, ax = plt.subplots(figsize=(9.1, 5.3))
     navy, teal, gray = '#274C77', '#008571', '#737B83'
-    ax.fill_between(sizes, lower, upper, color=navy, alpha=0.13,
-                    label='Gaussian universal optimum: bounded region')
-    ax.plot(sizes, lower, color=navy, linewidth=2.1,
-            label='Exact maximally mixed-input lower bound')
-    ax.plot(sizes, upper, color=navy, linewidth=1.3, linestyle='--',
-            label='Gaussian universal construction')
+    ax.fill_between(sizes, lower, interacting, color=teal, alpha=0.10)
+    ax.plot(sizes, gaussian, color=navy, linewidth=2.3, label='Exact Gaussian optimum')
     ax.plot(sizes, interacting, color=teal, linewidth=2.7,
             label='Interacting universal construction')
-    ax.plot(sizes, spectral, color=gray, linewidth=1.2, linestyle=':',
-            label='General spectral lower bound')
+    ax.plot(sizes, lower, color=gray, linewidth=1.2, linestyle=':',
+            label='Interacting lower bound')
     ax.set_xscale('log')
     ax.set_xlim(64, 1_000_000)
-    ax.set_ylim(0, 17.5)
+    ax.set_ylim(0, 17)
     ax.set_xlabel('Register size n (modes)', labelpad=8)
     ax.set_ylabel('Damping action per mode, A / n', labelpad=8)
     ax.set_title('Interactions remove the global-reset logarithm',
@@ -62,11 +65,13 @@ def main() -> None:
     ax.legend(loc='upper left', frameon=False, fontsize=9.1,
               labelspacing=0.65, handlelength=3.0)
     fig.text(0.12, 0.015,
-             'Upper curves include reference correlations. Coherent synthesis cost is not included.',
+             'The interacting band is bounded by a converse and explicit schedules.',
              fontsize=9.3, color='#4C5662')
     fig.subplots_adjust(left=0.12, right=0.98, bottom=0.145, top=0.83)
     figures = root/'figures'; figures.mkdir(exist_ok=True)
-    fig.savefig(figures/'action_scaling.svg', metadata={'Date': None})
+    svg = figures/'action_scaling.svg'
+    fig.savefig(svg, metadata={'Date': None})
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fig.savefig('/tmp/fermionic-reset-action-scaling.png', dpi=150)
     plt.close(fig)
     results = root/'results'; results.mkdir(exist_ok=True)

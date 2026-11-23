@@ -6,7 +6,7 @@ For a register of $`n\geq 1`$ fermionic modes, the maximum vacuum population obt
 \boxed{F_{\mathrm G}(n,A)=\left(1-\frac12 e^{-A/n}\right)^n.}\qquad\text{(1)}
 ```
 
-The controls include arbitrary quadratic Hamiltonians, arbitrary linear Lindblad jump operators, instantaneous Gaussian unitary pulses, and classical randomization with an action bound for every realization. Equal loss exposure of all modes attains (1), including through a single reset port. This is an exact state-preparation result for a specified maximally mixed input. It supplies a converse for universal reset, but does not assert that (1) is the exact finite-action fidelity of the universal reset problem.
+The controls include arbitrary quadratic Hamiltonians, arbitrary linear Lindblad jump operators, instantaneous Gaussian unitary pulses, and classical randomization with an action bound for every realization. Equal loss exposure of all modes attains (1), including through a single reset port. This exact state-preparation result is an ingredient of the [universal frontier](universal-frontier.md), where the odd-parity witness supplies the additional error term.
 
 All logarithms below are natural. Vacuum population means the overlap $`\langle\Omega|\rho|\Omega\rangle`$, without taking its square root.
 
@@ -151,8 +151,8 @@ $`X+X^T=-4\mathrm{Re}\,M`$ and
 $`0\preceq\mathrm{Re}\,M\preceq(\mathrm{Tr}\,M)I`$,
 
 ```math
-\frac{d}{dt}\|S(t,s)v\|^2
-\ge -2\Gamma(t)\|S(t,s)v\|^2.\qquad\text{(15)}
+\frac{d}{dt}\lVert S(t,s)v\rVert^2
+\ge -2\Gamma(t)\lVert S(t,s)v\rVert^2.\qquad\text{(15)}
 ```
 
 Gronwall's inequality gives
@@ -326,7 +326,7 @@ Its vacuum population and largest eigenvalue are both $`F_{\mathrm G}(n,A)`$, at
 
 The same final state is achievable with one loss port $`L=\sqrt{\kappa(t)}c_1`$. Move one logical mode at a time to the port with Gaussian mode permutations, expose it for integrated rate $`A/n`$, and restore the mode labels. Fermionic exchange phases do not affect the diagonal states in this construction. Exactly $`n`$ equal exposures give total action $`A`$. Thus allowing many simultaneous linear jumps strengthens the converse without being necessary for attainment.
 
-Let $`\mathsf D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1`$. A measurement of the vacuum projector implies
+Let $`\mathsf D(\rho,\sigma)=\frac12\lVert \rho-\sigma\rVert_1`$. A measurement of the vacuum projector implies
 
 ```math
 \mathsf D(\rho,|\Omega\rangle\!\langle\Omega|)
@@ -364,7 +364,7 @@ A_{\mathrm G}^{\tau}(n,\epsilon)
 
 In the small-error regime, the leading form is $`n\log[n/(2\epsilon)]`$.
 
-Any channel whose half-diamond distance from vacuum replacement is at most $`\epsilon`$ must, in particular, prepare vacuum from $`\tau_n`$ with trace error at most $`\epsilon`$. Equation (33) is therefore a lower bound on the action of every universal Gaussian reset protocol under the same action convention. Establishing this converse does not identify the exact finite-action universal optimum.
+Any channel whose half-diamond distance from vacuum replacement is at most $`\epsilon`$ must, in particular, prepare vacuum from $`\tau_n`$ with trace error at most $`\epsilon`$. Equation (33) is therefore a lower bound on the action of every universal Gaussian reset protocol under the same action convention. The [universal frontier](universal-frontier.md) sharpens this witness by exactly accounting for the odd-parity sector.
 
 ## 9. Independent convention check
 

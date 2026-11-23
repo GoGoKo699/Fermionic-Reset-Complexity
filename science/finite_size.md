@@ -82,7 +82,7 @@ All three stage conditions hold for sufficiently large $`m`$. For every $`\eta\g
 
 To justify the limit, first take the limsup with fixed $`\eta`$, obtaining the denominator $`1-h_2(p)-\eta`$, and only then let $`\eta`$ decrease to zero. This is an attainable coefficient for this construction, not a converse or an optimum over interacting protocols. The lower bound remains $`\ln2`$ at leading order.
 
-The examples use $`q=1/5`$. Thus the asymptotic achievable coefficient is $`\ln5/[1-h_2(1/10)]`$, about $`3.03`$. Threshold rounding and the cleanup block are included in every finite-size evaluation; the asymptotic coefficient is not substituted for a finite-register bound.
+The examples use $`q=1/5`$. Thus the asymptotic achievable coefficient is $`\ln5/[1-h_2(1/10)]`$, about $`3.03`$. The [mirrored-tree schedule](interacting-frontier.md) has an achievable leading coefficient of $`2.5`$ at fixed error. Threshold rounding and the cleanup block are included in every finite-size evaluation; the asymptotic coefficient is not substituted for a finite-register bound.
 
 ## 4. Reproduction and interpretation
 
@@ -95,4 +95,4 @@ python verification/plot_action_scaling.py
 
 The first command records all integer thresholds, active sizes, stage exposures and analytical error bounds in [finite_protocol.json](../verification/results/finite_protocol.json). The second generates the figure and the numerical table linked in the [verification guide](../verification/README.md). These are floating-point evaluations of an analytical construction, with explicit inequality checks; they are not an interval-arithmetic proof or a search for the optimal interacting controller.
 
-The plotted Gaussian lower curve is already necessary on the maximally mixed witness. The Gaussian upper curve guarantees universal reset. The interacting upper curve is a concrete universal protocol. Wherever the latter lies below the Gaussian lower curve, these explicit finite-register bounds certify an advantage under the common action accounting. Its magnitude is not a gate-duration or energy-saving claim.
+The current [action plot](../verification/figures/action_scaling.svg) uses the exact [Gaussian channel optimum](universal-frontier.md). Its interacting upper curve selects the least action among the compression certificate, the mirrored-tree certificate and the Gaussian optimum. The plotted interacting lower curve combines the spectral and odd-parity no-jump bounds. These curves count loss action under the common model.

@@ -2,7 +2,7 @@
 
 The educational anchor is John Watrous, *The Theory of Quantum Information* (Cambridge University Press, 2018). The [author's book page](https://jhwatrous.github.io/books-and-courses.html) provides a manuscript, chapter files, and [errata](https://jhwatrous.github.io/TQI.errata.pdf). The pointers below were checked against the current author-hosted **standard-layout** files on 30 October 2026. They refer to section and theorem numbers, avoiding differences between PDF page counters and printed pagination. The manuscript is available for personal use; this repository links to it rather than reproducing it.
 
-Watrous supplies the language of states, channels, reference systems, distinguishability, and source coding. The fermionic dynamics and the action bounds require additional arguments supplied by this project's [model](../science/model.md), [Gaussian proof](../science/gaussian_bound.md), [interacting construction](../science/interacting_reset.md), and [finite-size protocol](../science/finite_size.md). The research papers cited below retain their roles as primary sources.
+Watrous supplies the language of states, channels, reference systems, distinguishability, and source coding. The fermionic dynamics and the action bounds require additional arguments supplied by this project's [model](../science/model.md), [Gaussian state proof](../science/gaussian_bound.md), [universal conversion](../science/universal-frontier.md), and [interacting action frontier](../science/interacting-frontier.md). The research papers cited below retain their roles as primary sources.
 
 ## 1. Verified reading map
 
@@ -42,9 +42,9 @@ The replacement channel is $`\mathcal R_n(B)=\mathrm{Tr}(B)|\Omega_n\rangle\lang
 ```math
 \begin{aligned}
 d_{\rm reset}(\Phi)
-&=\frac12\|\Phi-\mathcal R_n\|_\diamond\\
+&=\frac12\lVert \Phi-\mathcal R_n\rVert_\diamond\\
 &=\max_{\rho_{SR}}\frac12
-\|\omega_{SR}-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R\|_1,\\
+\lVert \omega_{SR}-|\Omega_n\rangle\langle\Omega_n|\otimes\rho_R\rVert_1,\\
 \omega_{SR}&=(\Phi\otimes\mathrm{id}_R)(\rho_{SR}).
 \end{aligned}
 ```
@@ -67,7 +67,7 @@ K_0^\dagger K_0+K_1^\dagger K_1&=I.
 
 The maximally mixed input becomes $`\mathrm{diag}(1-q/2,q/2)`$, while the occupied input becomes $`\mathrm{diag}(1-q,q)`$. Their trace errors from vacuum are respectively $`q/2`$ and $`q`$.
 
-At $`a=\ln5`$, the maximally mixed input therefore reaches vacuum population $`0.9`$, saturating the one-mode Gaussian theorem. The same channel has error $`0.2`$ on the occupied input. A sharp answer for the specified witness consequently does not identify the universal-channel optimum. Conversely, every universal reset must pass that witness, so the exact state theorem gives a valid channel lower bound.
+At $`a=\ln5`$, the maximally mixed input therefore reaches vacuum population $`0.9`$, saturating the one-mode Gaussian theorem. The same channel has error $`0.2`$ on the occupied input. The full channel optimization uses a different witness. The occupied state is the odd sector for a single mode, and the [universal conversion](../science/universal-frontier.md) gives exact optimal error $`e^{-a}`$. At action $`a=\ln 5`$, the selected-input error is $`0.1`$ and the optimal universal error is $`0.2`$.
 
 ## 4. Why reference correlations appear in the proof
 
@@ -84,7 +84,7 @@ $`|\psi_\eta\rangle=\sqrt{1-\eta}|00\rangle+\sqrt\eta|11\rangle`$, with $`0 \lt 
 
 This is of order $`\sqrt\eta`$ for small $`\eta`$. The example explains why a marginal population estimate cannot simply be reused as a joint trace-distance estimate. An exactly pure system marginal does force a product state; the issue here is quantitative approximation.
 
-The [interacting proof, §§2–3](../science/interacting_reset.md) handles this issue explicitly. Averaging over even Majorana monomials is an allowed mixture of Gaussian unitaries. It removes all system information except parity. With $`P_m=(-1)^{\sum_jc_j^\dagger c_j}`$ the active-block parity, the twirled state has the form $`2^{-m}(I\otimes\rho_R+P_m\otimes\Delta_R)`$, where $`\|\Delta_R\|_1\le1`$. Equal loss with survival $`q`$ then gives
+The [interacting proof, §§2–3](../science/interacting_reset.md) handles this issue explicitly. Averaging over even Majorana monomials is an allowed mixture of Gaussian unitaries. It removes all system information except parity. With $`P_m=(-1)^{\sum_jc_j^\dagger c_j}`$ the active-block parity, the twirled state has the form $`2^{-m}(I\otimes\rho_R+P_m\otimes\Delta_R)`$, where $`\lVert \Delta_R\rVert_1\le1`$. Equal loss with survival $`q`$ then gives
 
 ```math
 \begin{aligned}
@@ -97,6 +97,14 @@ The [interacting proof, §§2–3](../science/interacting_reset.md) handles this
 The second term contributes at most $`q^m/2`$ to half-trace distance. The comparison state is an independent biased source with the correct reference marginal. Deriving this identity requires the Majorana twirl and the action of fermionic loss on diagonal operators; it is additional to the textbook channel formalism.
 
 The classical random seed is ignored in the output specification. Both control classes receive this same resource. The proof does not assert decoupling conditioned on that seed, and every seed realization has the prescribed action cap.
+
+### Why the odd sector gives the exact channel error
+
+Write $`\tau_n=I/2^n`$ and $`\tau_\pm=(I\pm P_n)/2^n`$. For a branch $`\Phi`$ of action $`A`$, the CAR imply $`\Phi(P_n)=e^{-A}P_n`$. An odd linear jump attenuates the parity operator at the charged rate, and even controls preserve it. The even vacuum therefore has conditional populations $`F_{\rm mix}\pm 2^{-n}e^{-A}`$ for the two sector inputs, where $`F_{\rm mix}=\langle\Omega_n|\Phi(\tau_n)|\Omega_n\rangle`$. A vacuum measurement on $`\tau_-`$ gives the lower bound on reference-stable error.
+
+The [universal proof](../science/universal-frontier.md#matching-channel-with-an-arbitrary-reference) attains that bound by adding two allowed Gaussian averages. The input twirl leaves a positive reference operator attached to each sector, with the two operators summing to $`\rho_R`$. Output phase averaging removes coherence between the vacuum and its complement while preserving their populations. For each sector the resulting vacuum failure equals trace distance to the target. With an arbitrary reference the error is bounded above by the two scalar failures weighted by their sector probabilities. The odd-sector input attains the larger failure. Optimizing the vacuum population from $`\tau_n`$ now solves the ordinary half-diamond optimization in either control class.
+
+For two modes with action $`A=\ln 16`$, Gaussian equal exposure leaves a per-mode survival $`q=1/4`$. The optimized mixed-input vacuum population is $`49/64`$ and the parity term is $`1/64`$. The odd input's population is $`3/4`$, giving optimal universal error $`1/4`$. All three numbers use the same loss budget.
 
 ## 5. From matrix spectra to the Gaussian action law
 
@@ -144,7 +152,7 @@ The right side is exactly the probability of a nonzero cold prefix. Positivity o
 
 The one-sided tail constant used in the project comes from [Hoeffding's original Theorem 2](https://doi.org/10.1080/01621459.1963.10500830). Watrous Theorem 1.16 is a two-sided statement with prefactor two; substituting it unchanged would alter the allocated finite error. The cooling-and-compression mechanism itself is established algorithmic cooling, with primary antecedents in [Boykin et al.](https://arxiv.org/abs/quant-ph/0106093) and the [single-port control work of Bergholm, Wilhelm and Schulte-Herbrüggen](https://arxiv.org/abs/1605.06473v2).
 
-## 7. Closing the proof with finite error and action accounting
+## 7. Error and action accounting for the compression schedule
 
 Each new stage acts on an active block that may again be correlated. Its twirl restores the controlled source form. Contractivity of joint trace distance propagates the existing error; the next stage adds its own error. The [interacting proof, §5](../science/interacting_reset.md) also checks the fermionic parity strings across the frozen prefix. Treating a loss on an arbitrary fermionic suffix as an ordinary tensor-local qubit channel would omit that step.
 
@@ -152,6 +160,10 @@ The [finite-size rule](../science/finite_size.md) allocates $`\delta_m=\epsilon/
 
 For fixed $`q,\epsilon`$, the ratio of successive large active sizes approaches $`h_2(q/2) \lt 1`$. Summing their action yields the achievable limiting coefficient $`\ln(1/q)/[1-h_2(q/2)]`$; at $`q=1/5`$ this is about $`3.03`$. This is a coefficient for the stated construction. Finite-register calculations retain threshold rounding and cleanup costs.
 
-The Gaussian witness forces $`n\ln n+O_\epsilon(n)`$ action at fixed global error, and a Gaussian universal protocol achieves that order. For arbitrary coherent control, the direct spectral bound $`\lambda_{\max}(\rho(T))\le e^A\lambda_{\max}(\rho(0))`$ supplies a lower bound $`n\ln2+\ln(1-\epsilon)`$ from the same maximally mixed input; the compression protocol supplies the linear upper bound. The [primary-source comparison](../references/RELATED_WORK.md) separates the inherited control and compression tools from these specific claims.
+## 8. Balanced loss contacts and the two interacting limits
 
-The resulting hierarchy is $`A_{\rm G}(n,\epsilon)=\Theta_\epsilon(n\ln n)`$ versus $`A_{\rm I}(n,\epsilon)=\Theta_\epsilon(n)`$, with all modes retained, the same single loss port, the same allowed randomization, and fixed global channel error. The Gaussian state-preparation frontier is exact; the finite-action universal optima and the optimal interacting leading coefficient remain unidentified. Coherent gate count, geometry, strength, duration, heat, and work are outside the charged action in this model.
+A single loss port pairs every occupied-port configuration with its empty-port partner. The pairing joins opposite parities and has equally many senders of each parity for $`n\ge2`$. An even occupation-basis permutation relabels the pairs while preserving the sender counts. This permits the [mirrored-tree construction](../science/interacting-frontier.md#2-finite-schedules-with-logarithmic-graph-depth), which uses a fixed finite list of such pairings in every sweep. If the state is still outside the vacuum, its assigned parent-edge contact gives it a probability of moving closer to the root. The resulting binomial tail bounds the full schedule's vacuum failure. The joint optimal action scales as $`n+\ln(1/\epsilon)`$ for $`n\ge2`$ and $`0<\epsilon\le1/2`$. At a fixed target error the construction achieves a coefficient of $`5/2`$ on the leading linear action.
+
+The precision converse uses a different feature of the same port. On the odd parity sector the average port occupation is $`1/2`$. The no-jump propagator's determinant therefore fixes the geometric mean of its squared singular values at $`e^{-A/2}`$. Their arithmetic mean lower-bounds the surviving odd population, which the even vacuum cannot absorb without a jump. A schedule alternating the two matchings of an even cycle attains the resulting fixed-size error exponent $`1/2`$. The exact Gaussian frontier instead gives exponent $`1/n`$ for $`n\ge2`$.
+
+The [primary-source comparison](../references/RELATED_WORK.md) attributes the Gaussian dynamics, parity decay mode, single-port control and source-coding ingredients. The exact interacting curve beyond two modes and the optimal large-register action coefficient remain open. The comparison charges integrated loss, counting all modes with the same port and reference-sensitive error. Synthesis, geometry and elapsed hardware time are outside that action budget.

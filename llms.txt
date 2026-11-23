@@ -1,26 +1,25 @@
 # Fermionic Reset Complexity
 
-Scientific repository: https://github.com/GoGoKo699/Fermionic-Reset-Complexity
+Scientific repository <https://github.com/GoGoKo699/Fermionic-Reset-Complexity>
 
-The central question is the total Markovian damping action needed to reset an entire fermionic register. At fixed global half-diamond error, Gaussian control costs Theta(n log n), while arbitrary fast parity-preserving interacting control costs Theta(n). Both classes use the same loss port, no supplied pure quantum ancillas, and the same input-independent classical Gaussian-control randomness.
+The task is reference-stable reset of an entire fermionic register with all modes retained. Both control classes use one unmonitored Markovian vacuum-loss port and charge its total integrated rate in every branch. Gaussian control is quadratic, including pairing. Interacting control can apply arbitrary fast even unitaries. Both classes may use input-independent Gaussian randomization whose record is discarded. No supplied pure quantum ancillary modes, feedback, measurements, or postselection enter the resource model.
+
+At action cap A, the exact Gaussian half-diamond reset error is 1 - (1 - exp(-A/n)/2)^n + 2^(-n) exp(-A). The interacting action is Theta(n + ln(1/epsilon)) uniformly for n >= 2 and 0 < epsilon <= 1/2. At fixed n >= 2 the sharp error decay exponents in A are 1/n for Gaussian control and 1/2 for interacting control. At each fixed target error in the stated joint domain, the mirrored-tree construction attains leading linear coefficient at most 5/2 as n grows.
 
 ## Reading routes
 
-- Connected scientific story: science/README.md, then science/model.md and science/interpretation.md.
-- Exact controls, rate normalization and reference contract: science/model.md.
-- Exact maximally mixed-input Gaussian frontier, general linear jumps, spectral crossings and pulse limits: science/gaussian_bound.md.
-- Universal interacting upper bound, parity twirl, reference-aware compression, linear lower bound and Gaussian universal upper: science/interacting_reset.md.
-- Explicit finite-size thresholds, action certificate and asymptotic attainable coefficient: science/finite_size.md.
-- Closest external and internal scientific comparisons: references/RELATED_WORK.md; bibliography: references/references.bib.
-- Numerical reproduction and what the checks establish: verification/README.md.
-- Figure source: verification/plot_action_scaling.py; certified finite plans: verification/finite_protocol.py.
-- Educational anchor: John Watrous, The Theory of Quantum Information (2018); precise source bridge and notation translation: learning/WATROUS_BRIDGE.md.
-- Shared learning route: learning/MILESTONES.md, exactly 30 project-defined understanding targets with earlier dependencies, conceptual connections and source pointers.
+- Connected scientific story, physical setup, and interpretation. See science/README.md, science/model.md, and science/interpretation.md.
+- Gaussian state frontier, general linear jumps, spectral crossings, and pulse limits. See science/gaussian_bound.md.
+- Odd-parity witness, reference-sensitive state-to-channel reduction for both classes, exact Gaussian channel frontier, and the two-mode endpoint. See science/universal-frontier.md.
+- Balanced single-port matchings, finite mirrored-tree sweeps, the odd no-jump determinant converse, sharp fixed-size precision exponent, and the finite three-mode separation. See science/interacting-frontier.md.
+- Earlier reference-aware entropy compression, spectral inflow bound, and quantitative compression schedule. See science/interacting_reset.md and science/finite_size.md.
+- Primary and internal comparisons. See references/RELATED_WORK.md and references/references.bib.
+- Numerical reproduction, figures, and scope of checks. See verification/README.md.
+- Educational anchor. See learning/WATROUS_BRIDGE.md for John Watrous, The Theory of Quantum Information (2018), with precise pointers and notation.
+- Learning route. See learning/MILESTONES.md for exactly 30 project-defined understanding targets, earlier dependencies, conceptual connections, and source pointers.
 
-## Essential distinctions
+## Keeping the two Gaussian optima distinct
 
-The exact formula F_G(n,A)=[1-exp(-A/n)/2]^n is for vacuum preparation from I/2^n. It is a necessary witness for universal reset, not an exact finite-action solution of that channel optimization. The Gaussian state cost is A_G^tau; the universal cost is A_G. All randomized branches satisfy the action cap. Their average need not be Gaussian. The interacting finite-size curves are achievable bounds, not the finite optimum. Coherent synthesis, locality and gate time are unpriced. Classical randomization supplies unital averaging and its record is ignored at the output. The ordinary matrix-algebra half-diamond guarantee includes arbitrary references.
+The exact selected-input Gaussian vacuum population from I/2^n is (1 - exp(-A/n)/2)^n. For the universal task, the odd-parity input reduces that population by 2^(-n) exp(-A). The allowed parity twirl and vacuum dephasing attain the resulting worst-case error even with arbitrary reference correlations. In the interacting class the same state-to-channel reduction holds, while the finite-action interacting optimum for n >= 3 and the optimal large-register coefficient remain open.
 
-The public repository owns the scientific statements and reproducibility materials. Bibliographic claims and inherited proof ingredients are documented in references/RELATED_WORK.md.
-
-The learning map is independent of any reader's assessment history. Use its dependencies and canonical scientific sources to explain the argument; the bridge identifies which ingredients come from Watrous and which require the repository's own derivations or cited primary research.
+The comparison concerns dissipative action. Coherent synthesis, locality, switching, and full hardware time are outside the action budget. The ordinary matrix-algebra half-diamond guarantee includes arbitrary reference systems. The learning map is independent of any reader's assessment history.

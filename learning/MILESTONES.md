@@ -4,25 +4,25 @@ This map describes the project's understanding targets for any reader. The canon
 
 ## Allocation and reading structure
 
-**Background/preliminaries occupies M01–M12; narrative/innovation occupies M13–M30.** Twelve background milestones assemble finite-dimensional quantum information, fermionic structure, Markovian loss, and information concentration into one operational framework. Eighteen narrative milestones are needed because the result joins two substantial arguments: an optimized Gaussian obstruction and a universal interacting construction. Their combination also requires a general-control converse, a universal Gaussian upper bound, and careful interpretation of finite-size certificates.
+**Background/preliminaries occupies M01–M12; narrative/innovation occupies M13–M30.** Twelve background milestones assemble finite-dimensional quantum information, fermionic structure, Markovian loss, and information concentration into one operational framework. Eighteen narrative milestones develop the Gaussian state optimum and its exact conversion to a universal channel guarantee. They then connect parity-preserving concentration and routing to the joint interacting action law and the fixed-register precision limit.
 
-Both phases progress from local to global. The background starts with one occupation and ends with a complete resource-and-error contract. The narrative starts with covariance evolution and a single compression stage, then builds complete protocols, matching asymptotic orders, and the physical meaning of the comparison. Dependencies name earlier milestones; a source pointer can lead to a later portion of a proof without making that whole proof a prerequisite.
+Both phases progress from local to global. The background starts with one occupation and ends with a complete resource-and-error contract. The narrative starts with covariance evolution and the parity decay mode, then builds complete protocols, matches the interacting orders, and compares the two control classes. Dependencies name earlier milestones; a source pointer can lead to a later portion of a proof without making that whole proof a prerequisite.
 
 | Range | Role in the scientific story |
 | --- | --- |
 | M01–M04 | States, references, channels, and observable error |
 | M05–M09 | Fermionic controls, dissipative action, randomness, and concentration |
 | M10–M12 | Composition of errors and the complete reset contract |
-| M13–M18 | Gaussian spectral obstruction and its exact selected-input frontier |
-| M19–M24 | A reference-uniform interacting protocol, from one stage to finite reset |
-| M25–M27 | Converses and constructions establishing the universal hierarchy |
-| M28–M30 | Finite certificates, quantitative limits, and integrated interpretation |
+| M13–M18 | Gaussian state frontier and the odd-parity witness |
+| M19–M24 | Parity twirling, reference control, and finite single-port routing |
+| M25–M27 | Interacting converses, exact Gaussian reset, and the joint action law |
+| M28–M30 | Finite advantage, sharp precision exponents, and physical scope |
 
 ## The single educational anchor
 
 The anchor is John Watrous, *The Theory of Quantum Information* (2018), using the author's [Chapter 1](https://jhwatrous.github.io/TQI.1.pdf), [Chapter 2](https://jhwatrous.github.io/TQI.2.pdf), [Chapter 3](https://jhwatrous.github.io/TQI.3.pdf), and [Chapter 5](https://jhwatrous.github.io/TQI.5.pdf). Section pointers below identify foundations relevant to each target, rather than prescribing entire chapters. Fermionic covariance, the Lindblad normalization, parity-respecting control, and the new bounds are supplied by the linked project sources and their primary references.
 
-Two conventions require attention throughout. Watrous uses root fidelity, so vacuum population is the **square** of the book's fidelity with the vacuum. The book's unqualified logarithm has base two; this project uses natural logarithms for action and explicitly writes the binary entropy as $`h_2`$. The ordinary completely bounded trace norm is denoted by $`\|\cdot\|_\diamond`$ here, and reset error includes its factor of one half.
+Two conventions require attention throughout. Watrous uses root fidelity, so vacuum population is the **square** of the book's fidelity with the vacuum. The book's unqualified logarithm has base two; this project uses natural logarithms for action and explicitly writes the binary entropy as $`h_2`$. The ordinary completely bounded trace norm is denoted by $`\lVert \cdot\rVert_\diamond`$ here, and reset error includes its factor of one half.
 
 ## Phase I: background/preliminaries
 
@@ -57,7 +57,7 @@ Two conventions require attention throughout. Watrous uses root fidelity, so vac
 
 - **Phase:** Background/preliminaries.
 - **Central question:** How does the chance of finding an excitation relate to distance from the reset target?
-- **Understanding target:** Interpret $`D(\rho,\sigma)=\tfrac12\|\rho-\sigma\|_1`$ through distinguishability. Recognize that vacuum measurement gives a lower bound on trace error, while equality requires additional structure; vacuum population is not generally a complete reference-sensitive certificate.
+- **Understanding target:** Interpret $`D(\rho,\sigma)=\tfrac12\lVert \rho-\sigma\rVert_1`$ through distinguishability. Recognize that vacuum measurement gives a lower bound on trace error, while equality requires additional structure; vacuum population is not generally a complete reference-sensitive certificate.
 - **Dependencies and story role:** M01–M03. Connects a concrete measurement to the norm used in the proofs.
 - **Conceptual connection:** Many small local occupation errors can produce a large global failure probability. The project's overlap convention differs from Watrous's root fidelity.
 - **Source pointers:** [Watrous §3.1.1, Theorem 3.4, and §3.2, Definition 3.11](https://jhwatrous.github.io/TQI.3.pdf); [Gaussian proof §7, Eq. (32)](../science/gaussian_bound.md#7-attainment-by-equal-exposure); [interpretation: global reset](../science/interpretation.md#global-reset-requires-more-than-small-local-occupation).
@@ -120,7 +120,7 @@ Two conventions require attention throughout. Watrous uses root fidelity, so vac
 
 - **Phase:** Background/preliminaries.
 - **Central question:** What single condition guarantees reset for every unknown input and reference?
-- **Understanding target:** Interpret $`\tfrac12\|\Phi-\mathcal R_n\|_\diamond`$ as the worst joint-state trace error. Understand why a reference dimension $`2^n`$ suffices and why the ordinary matrix-algebra norm used here includes arbitrary coherences, exceeding a restriction to parity-compatible tests.
+- **Understanding target:** Interpret $`\tfrac12\lVert \Phi-\mathcal R_n\rVert_\diamond`$ as the worst joint-state trace error. Understand why a reference dimension $`2^n`$ suffices and why the ordinary matrix-algebra norm used here includes arbitrary coherences, exceeding a restriction to parity-compatible tests.
 - **Dependencies and story role:** M02–M05, M10. Integrates states, channels, and errors into the operational success criterion.
 - **Conceptual connection:** A reference-uniform upper bound solves a stronger task than preparation from one witness state; the norm itself supplies no additional controlled system.
 - **Source pointers:** [Watrous §§3.3.2–3.3.3, Definition 3.43 and Theorems 3.46 and 3.51](https://jhwatrous.github.io/TQI.3.pdf); [model §1](../science/model.md#1-register-reference-and-error); [interacting proof Eq. (I1)](../science/interacting_reset.md#1-the-statement-and-its-resources).
@@ -181,20 +181,20 @@ Two conventions require attention throughout. Watrous uses root fidelity, so vac
 - **Conceptual connection:** A converse proved for a larger linear-jump class is already tight in the smaller single-port model, so extra linear bath orientations provide no improvement for this task.
 - **Source pointers:** [Watrous §§2.1.2 and 2.2.1](https://jhwatrous.github.io/TQI.2.pdf); [Gaussian proof §7, Eqs. (30)–(32)](../science/gaussian_bound.md#7-attainment-by-equal-exposure).
 
-### M18 · A selected-input optimum becomes a universal converse
+### M18 · The odd-parity input witnesses universal reset
 
 - **Phase:** Narrative/innovation.
-- **Central question:** What does the exact Gaussian frontier establish about unknown-input reset?
-- **Understanding target:** Interpret its inverse $`A_{\rm G}^{\tau}(n,\epsilon)`$, including zero-action and exact-reset endpoints. Explain the fixed-error law $`n\ln n+O_\epsilon(n)`$ and the implication $`A_{\rm G}\ge A_{\rm G}^{\tau}`$ without identifying an exact finite-action universal optimum.
-- **Dependencies and story role:** M11–M12, M16–M17. Integrates the Gaussian arc into the full task as a necessary bound.
-- **Conceptual connection:** Universal correctness must pass the maximally mixed witness; successful preparation of that witness alone cannot establish universal correctness.
-- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf); [Gaussian proof §8, Eqs. (33)–(34)](../science/gaussian_bound.md#8-error-thresholds-and-asymptotics); [model §5](../science/model.md#5-exact-state-frontier-and-universal-hierarchy).
+- **Central question:** Which input detects the gap between Gaussian vacuum preparation and universal reset?
+- **Understanding target:** Use the total parity operator $`P=(-1)^{N}`$ and the normalized parity-sector states $`\tau_\pm=(I\pmP)/2^n`$. From $`\Phi(P)=e^{-A}P`$ at fixed action, compute the vacuum populations $`F_{\rm mix}\pm 2^{-n}e^{-A}`$. Test the odd state with the vacuum measurement to obtain a channel-error lower bound.
+- **Dependencies and story role:** M04–M05, M07–M08, M11–M12, M16–M17. Introduces the parity correction to the exact state frontier.
+- **Conceptual connection:** The selected-state frontier fixes the input to $`\tau_n`$. An odd input has an additional, explicitly quantifiable reset cost because the target lies in the even sector.
+- **Source pointers:** [Watrous §§3.1.1 and 3.3.3](https://jhwatrous.github.io/TQI.3.pdf); [Gaussian state threshold](../science/gaussian_bound.md#8-error-thresholds-and-asymptotics); [parity decay and the odd-input witness](../science/universal-frontier.md#parity-decay-on-each-trajectory).
 
 ### M19 · Twirling an unknown block while retaining its reference
 
 - **Phase:** Narrative/innovation.
 - **Central question:** How can an input-independent Gaussian operation simplify every active-block input?
-- **Understanding target:** Explain why averaging even Majorana monomials leaves only identity and parity terms. Interpret the exact joint output $`I/2^m\otimes\rho_R+P_m/2^m\otimes\Delta_R`$, with $`\|\Delta_R\|_1\le1`$, including the parity-dependent information that survives.
+- **Understanding target:** Explain why averaging even Majorana monomials leaves only identity and parity terms. Interpret the exact joint output $`I/2^m\otimes\rho_R+P_m/2^m\otimes\Delta_R`$, with $`\lVert \Delta_R\rVert_1\le1`$, including the parity-dependent information that survives.
 - **Dependencies and story role:** M02–M03, M05, M08, M12. Starts the universal construction with a controlled reduction of arbitrary input structure.
 - **Conceptual connection:** The twirl is shared unital randomness, not purification or conditional decoupling given its seed; its guarantee concerns the averaged channel.
 - **Source pointers:** [Watrous §§2.1.2–2.1.3 and 2.2.1](https://jhwatrous.github.io/TQI.2.pdf); [interacting proof §2, Eqs. (I5)–(I8)](../science/interacting_reset.md#2-an-even-gaussian-twirl-preserves-only-parity-information).
@@ -235,65 +235,65 @@ Two conventions require attention throughout. Watrous uses root fidelity, so vac
 - **Conceptual connection:** The proof does not treat imperfectly cooled modes as supplied pure workspace, nor assume tensor-local loss on an arbitrary prefix.
 - **Source pointers:** [Watrous §3.3.2, Proposition 3.48](https://jhwatrous.github.io/TQI.3.pdf) for composability; [interacting proof §5, especially Eq. (I20)](../science/interacting_reset.md#5-repeating-the-stage-without-losing-the-reference-guarantee).
 
-### M24 · A complete finite protocol with linear action
+### M24 · A finite single-port protocol from balanced matchings
 
 - **Phase:** Narrative/innovation.
-- **Central question:** How do shrinking active blocks yield a universal reset protocol for every finite register?
-- **Understanding target:** Combine geometric contraction, a summable stage-error bound, a fixed error-dependent stopping size, and final twirl-and-loss cleanup. Explain why small registers use cleanup directly and why deterministic sizes and exposures give $`A\le Cn+C_\epsilon`$ on every random branch.
-- **Dependencies and story role:** M07–M08, M11, M21–M23. Completes the interacting upper bound, including references and finite-size endpoints.
-- **Conceptual connection:** Most modes receive only a bounded amount of damping before their uncertainty is concentrated into the shrinking suffix; the final high-accuracy cost is confined to the small remaining block.
-- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf) for the norm contract; [interacting proof Theorem I and §§5–6, Eqs. (I17)–(I25)](../science/interacting_reset.md#theorem-i-linear-action-for-the-interacting-class).
+- **Central question:** How can a fixed sequence of loss contacts concentrate probability near the vacuum?
+- **Understanding target:** Recognize the directed perfect matching of even and odd occupation strings implemented by a conjugated port. Count senders of each parity, then follow the parent edge and twin completion in the mirrored-tree schedule. Explain why a complete sweep gives each nonvacuum state a chance to decrease its rank.
+- **Dependencies and story role:** M05, M07–M08, M11–M12, M19–M20. Builds a finite interacting construction that keeps the one-port resource explicit.
+- **Conceptual connection:** The probability accounting concerns a predetermined schedule. Rank decreases are a way to analyze unobserved jumps, and the controller observes no bath record.
+- **Source pointers:** [Watrous §2.2.1](https://jhwatrous.github.io/TQI.2.pdf) for channel composition; [balanced matchings and finite ordered sweeps](../science/interacting-frontier.md#2-finite-schedules-with-logarithmic-graph-depth).
 
-### M25 · A converse even with unrestricted coherent rearrangement
-
-- **Phase:** Narrative/innovation.
-- **Central question:** Why can interactions not make the required damping sublinear in the register size?
-- **Understanding target:** Explain the growth bound $`\lambda_{\max}(\rho(T))\le e^A\lambda_{\max}(\rho(0))`$, including the top-eigenspace directional derivative at degeneracy. Apply the maximally mixed witness to obtain $`A\ge\max\{0,n\ln2+\ln(1-\epsilon)\}`$ and understand its survival under pulses and branch averaging.
-- **Dependencies and story role:** M01, M04, M07–M08, M11–M12. Supplies the necessary bound that turns the interacting construction into an optimal scaling order.
-- **Conceptual connection:** Coherent control can rearrange eigenvectors but cannot itself raise the largest eigenvalue; the loss port limits that rate even beyond Gaussian dynamics.
-- **Source pointers:** [Watrous §1.1](https://jhwatrous.github.io/TQI.1.pdf) for spectral foundations; [interacting proof §7, Eqs. (I26)–(I28)](../science/interacting_reset.md#7-a-lower-bound-for-arbitrary-coherent-control), including its almost-everywhere and Dini-derivative treatment.
-
-### M26 · A universal upper bound using Gaussian control alone
+### M25 · Two interacting lower bounds from the same loss port
 
 - **Phase:** Narrative/innovation.
-- **Central question:** Can the Gaussian witness lower bound be matched in order for the full reference-sensitive task?
-- **Understanding target:** Apply the shared twirl and equal loss to all $`n`$ modes, choose $`q=\epsilon/n`$, and connect the biased product error and parity residue to a uniform error at most $`\epsilon`$. Identify the resulting action $`n\ln(n/\epsilon)`$ as an achievable universal bound.
-- **Dependencies and story role:** M11–M12, M19–M20. Supplies the missing constructive side of the Gaussian scaling statement.
-- **Conceptual connection:** Every conditioned schedule is Gaussian; the averaged channel belongs to the explicitly randomized class without any claim that its output is always Gaussian.
-- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf); [interacting proof §8, Eqs. (I29)–(I30)](../science/interacting_reset.md#8-gaussian-universal-upper-bound).
+- **Central question:** What prevents arbitrarily fast coherent rearrangements from beating both size and precision costs?
+- **Understanding target:** Apply the largest-eigenvalue growth bound to $`\tau_n`$ to recover $`A\ge n\ln 2+\ln(1-\epsilon)`$. For $`n\ge2`$, use the no-jump propagator on the odd sector, where the port occupation has mean $`1/2`$, and apply arithmetic–geometric mean to its squared singular values to obtain $`\epsilon\ge e^{-A/2}`$.
+- **Dependencies and story role:** M01, M04–M05, M07–M08, M11–M12, M18. Supplies the size and precision converses for arbitrary parity-preserving control.
+- **Conceptual connection:** Purifying the maximally mixed input limits how cheaply size can be handled. The surviving odd no-jump component forces a separate cost as the error tends to zero.
+- **Source pointers:** [Watrous §1.1](https://jhwatrous.github.io/TQI.1.pdf) for spectral foundations; [spectral inflow bound](../science/interacting_reset.md#7-a-lower-bound-for-arbitrary-coherent-control); [odd-sector no-jump converse](../science/interacting-frontier.md#3-converse-from-no-loss-jumps).
 
-### M27 · The universal action hierarchy
-
-- **Phase:** Narrative/innovation.
-- **Central question:** Which lower and upper bounds together establish the separation?
-- **Understanding target:** Assemble $`A_{\rm G}=\Theta_\epsilon(n\ln n)`$ and $`A_{\rm I}=\Theta_\epsilon(n)`$ for fixed $`0\lt \epsilon\lt 1`$. Distinguish an exact selected-input frontier, a witness converse, a universal construction, and an optimal asymptotic order.
-- **Dependencies and story role:** M12, M18, M24–M26. Integrates the two proof arcs into the main result under one resource contract.
-- **Conceptual connection:** The logarithmic advantage follows from comparing optimized control classes with the same bath and error requirement; it is not inferred solely from a slow sequential baseline.
-- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf) for the common task; [model §5](../science/model.md#5-exact-state-frontier-and-universal-hierarchy); [interpretation](../science/interpretation.md).
-
-### M28 · An explicit certificate for a chosen finite register
+### M26 · Exact reference-uniform Gaussian reset
 
 - **Phase:** Narrative/innovation.
-- **Central question:** How can the asymptotic construction become a deterministic schedule with a finite error certificate?
-- **Understanding target:** Interpret the size-dependent budget $`\delta_m=\epsilon/[4m(m+1)]`$, integer weight threshold, conservative two-mode trash guard, and stopping conditions. Connect the telescoping error budget and final cleanup to the exact sum of charged stage actions; the rule depends on sizes, not observed inputs.
-- **Dependencies and story role:** M21–M24, M27. Refines the transparent linear-action proof into a directly evaluable upper bound.
-- **Conceptual connection:** Integer rounding, parity capacity, residue control, and cleanup all matter before an asymptotic statement can certify a finite protocol.
-- **Source pointers:** [Watrous §1.2.2](https://jhwatrous.github.io/TQI.1.pdf) and [§5.3.1](https://jhwatrous.github.io/TQI.5.pdf) for concentration and counting foundations; [finite-size construction §§1–2](../science/finite_size.md#1-choose-the-next-active-block); [verification guide](../verification/README.md).
+- **Central question:** How can the odd-state lower bound become the exact worst-case reset error?
+- **Understanding target:** Precompose the evolution with the even Majorana twirl and dephase the final occupation basis by Gaussian phase averaging. Express a reference test as positive parity-conditioned blocks and show that their vacuum failures are bounded by the odd-sector failure. Insert the optimized Gaussian vacuum population to obtain $`1-(1-e^{-A/n}/2)^n+2^{-n}e^{-A}`$.
+- **Dependencies and story role:** M04, M08, M11–M12, M16–M20. Completes the Gaussian channel optimization and transfers the interacting channel optimization to one maximally mixed input.
+- **Conceptual connection:** The trace-distance equality uses the specific twirl and dephasing operations. Every branch is charged the stated action, and the error refers to the channel with the random seed discarded.
+- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf); [exact universal conversion and Gaussian frontier](../science/universal-frontier.md#matching-channel-with-an-arbitrary-reference).
 
-### M29 · Attainable coefficients and the limits of finite evidence
+### M27 · The joint size and accuracy law
 
 - **Phase:** Narrative/innovation.
-- **Central question:** What do the quantitative coefficient and the numerical comparison establish beyond scaling order?
-- **Understanding target:** Interpret the attainable coefficient $`\ln(1/q)/[1-h_2(q/2)]`$, about $`3.03`$ for $`q=1/5`$, against the converse coefficient $`\ln2`$. Distinguish this asymptotic upper coefficient from an optimal constant, a finite-register action, and the floating-point checks of analytical certificates.
-- **Dependencies and story role:** M09, M25, M27–M28. Integrates asymptotic refinement with finite, reproducible statements and their remaining gap.
-- **Conceptual connection:** A constructive upper curve below the Gaussian witness lower curve certifies a finite advantage; matrix examples and schedule evaluations do not prove arbitrary-control optimality.
-- **Source pointers:** [Watrous §5.1.1](https://jhwatrous.github.io/TQI.5.pdf) for the entropy convention; [finite-size construction §§3–4](../science/finite_size.md#3-a-smaller-asymptotic-coefficient); [verification guide: distinguish the bounds](../verification/README.md#keep-the-bounds-distinct).
+- **Central question:** How does the precision dependence change when interactions are available?
+- **Understanding target:** Combine the two lower bounds with the finite sweep construction. A binomial lower-tail bound controls the chance of failing to complete the required downward moves. Deduce $`A_{\rm I}=\Theta(n+\ln(1/\epsilon))`$ uniformly for $`n\ge2`$ and $`0<\epsilon\le1/2`$; recover the fixed-error Gaussian law $`A_{\rm G}=n\ln n+O_\epsilon(n)`$ from its exact channel formula.
+- **Dependencies and story role:** M12, M18, M24–M26. Compares the exact Gaussian frontier and the matched interacting action order under one resource contract.
+- **Conceptual connection:** At fixed error the Gaussian action has a logarithmic size overhead. At high accuracy, interacting routing also avoids paying an amount proportional to the register size for each additional unit of log inverse error.
+- **Source pointers:** [exact Gaussian frontier](../science/universal-frontier.md#gaussian-attainment-and-endpoints); [finite interacting construction and joint action law](../science/interacting-frontier.md#2-finite-schedules-with-logarithmic-graph-depth).
+
+### M28 · A finite three-mode separation
+
+- **Phase:** Narrative/innovation.
+- **Central question:** What finite comparison certifies an advantage beyond asymptotic curves?
+- **Understanding target:** Follow the probability update of the two alternating cycle matchings and compute the worst initial parity-sector vacuum failure after the allowed twirl. Compare $`39/65536`$ after 32 contacts of action $`\ln 2`$ each with the exact Gaussian error at the same action.
+- **Dependencies and story role:** M07–M08, M18–M20, M24, M26–M27. Gives a finite test of the two control classes at matched action and global error.
+- **Conceptual connection:** The finite separation uses an explicit interacting schedule and an optimized Gaussian lower bound. Numerical checks of that schedule test the stated finite example.
+- **Source pointers:** [two-contact cycle and finite certificate](../science/interacting-frontier.md#exact-three-mode-separation-at-finite-action); [exact Gaussian comparator](../science/universal-frontier.md#the-finite-action-formula); [verification guide](../verification/README.md).
+
+### M29 · Sharp precision exponents and large-register coefficients
+
+- **Phase:** Narrative/innovation.
+- **Central question:** Which constants describe different limits of the same reset problem?
+- **Understanding target:** Use the cycle schedule and the no-jump bound to obtain error exponent $`1/2`$ at every fixed $`n\ge2`$, and expand the exact Gaussian error to get $`1/n`$. At fixed target error and large $`n`$, distinguish the achievable interacting action coefficient $`5/2`$ from the lower coefficient $`\ln 2`$ and the earlier compression construction's coefficient near $`3.03`$.
+- **Dependencies and story role:** M24–M28. Separates the fixed-size high-accuracy limit from the fixed-accuracy large-size limit.
+- **Conceptual connection:** A sharp error exponent determines the coefficient of $`\ln(1/\epsilon)`$ at fixed size. A coefficient of $`n`$ at fixed error addresses a different optimization.
+- **Source pointers:** [interacting exponents and coefficients](../science/interacting-frontier.md#4-two-matchings-attain-the-fixed-size-exponent); [Gaussian high-action expansion](../science/universal-frontier.md#gaussian-attainment-and-endpoints); [earlier compression certificate](../science/finite_size.md#3-a-smaller-asymptotic-coefficient).
 
 ### M30 · Mechanism, contribution, and physical scope
 
 - **Phase:** Narrative/innovation.
-- **Central question:** What is the complete scientific explanation for the action saved by interactions?
-- **Understanding target:** Join the Gaussian defect-product obstruction to global accuracy, and the interacting advantage to uncertainty concentration into geometrically shrinking blocks. Place the optimized Gaussian law and matched universal comparison alongside established covariance methods, single-port cooling, and algorithmic cooling, with the arbitrary-reference and parity requirements intact.
-- **Dependencies and story role:** M12, M15–M18, M19–M29. Completes the narrative by integrating mechanism, evidence, attribution, and limitations.
-- **Conceptual connection:** The result concerns total dissipative exposure under fast control. It does not establish an optimal interacting coefficient, optimal joint dependence on $`n`$ and $`\epsilon`$, efficient nonlinear synthesis, or a total hardware-runtime advantage.
-- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf) and [§§5.2.1 and 5.3.1](https://jhwatrous.github.io/TQI.5.pdf) for the operational and information-concentration foundations; [interpretation](../science/interpretation.md); [model](../science/model.md); [related work §§2–5](../references/RELATED_WORK.md#2-established-ingredients-and-the-specific-addition); [verification guide](../verification/README.md).
+- **Central question:** What physical comparison accounts for the action saved by interactions?
+- **Understanding target:** Connect the Gaussian constraint on occupation defects to its exact global channel frontier. Relate the interacting advantage to parity-preserving concentration and routing, and distinguish the proved joint order and fixed-size precision exponent from the open finite-action interacting optimum and optimal large-register action coefficient.
+- **Dependencies and story role:** M12, M15–M29. Brings the mechanism, evidence, and primary-source attribution together.
+- **Conceptual connection:** The comparison charges the same integrated bath strength while retaining every mode and testing arbitrary references. Coherent synthesis, locality, and hardware duration are outside the action budget.
+- **Source pointers:** [Watrous §§3.3.2–3.3.3](https://jhwatrous.github.io/TQI.3.pdf) and [§§5.2.1 and 5.3.1](https://jhwatrous.github.io/TQI.5.pdf); [interpretation](../science/interpretation.md); [model](../science/model.md); [related work](../references/RELATED_WORK.md); [verification guide](../verification/README.md).

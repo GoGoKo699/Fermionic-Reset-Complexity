@@ -24,6 +24,47 @@ def gaussian_witness_action(n: int, epsilon: float) -> float:
     return max(0.0, -n * math.log(2 * defect))
 
 
+def gaussian_reset_error(n: int, action: float) -> float:
+    """Exact half-diamond error at a Gaussian action budget."""
+    if n == 1:
+        return math.exp(-action)
+    if n == 2:
+        return math.exp(-action / 2)
+    p = math.exp(-action / n - math.log(2))
+    mixed_failure = -math.expm1(n * math.log1p(-p))
+    return mixed_failure + math.exp(-action - n * math.log(2))
+
+
+def gaussian_reset_action(n: int, epsilon: float) -> float:
+    """Evaluate the inverse of the exact Gaussian curve by monotone bisection."""
+    if n <= 2:
+        return -n * math.log(epsilon)
+    lo, hi = 0.0, n * (math.log(n) - math.log(epsilon))
+    for _ in range(64):
+        mid = (lo + hi) / 2
+        if gaussian_reset_error(n, mid) > epsilon:
+            lo = mid
+        else:
+            hi = mid
+    return hi
+
+
+def mirrored_tree_certificate(n: int, epsilon: float) -> dict:
+    """Bound losses in finite five-contact sweeps using a binomial tail."""
+    if n < 2 or not 0 < epsilon < 1:
+        raise ValueError('n must be at least two and epsilon must lie in (0,1)')
+    rank_bound = 1 + n // 2
+    a = n ** -0.5
+    p = -math.expm1(-a)
+    log_error = -math.log(epsilon)
+    # For mean mu >= r, Pr(X < r) <= exp(-(mu-r)^2/(2*mu)).
+    # This mean solves (mu-r)^2/(2*mu) = log(1/epsilon).
+    mean = rank_bound + log_error + math.sqrt(log_error * (2 * rank_bound + log_error))
+    sweeps = math.ceil(mean / p)
+    return {'action': 5 * sweeps * a, 'contact_action': a,
+            'sweeps': sweeps, 'contacts': 5 * sweeps, 'rank_bound': rank_bound}
+
+
 def plan(n: int, epsilon: float = 0.1, q: float = 0.2) -> dict:
     if not isinstance(n, int) or n < 1:
         raise ValueError('n must be a positive integer')

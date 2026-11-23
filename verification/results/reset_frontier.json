@@ -1,0 +1,30 @@
+{
+  "tree_modes": [
+    2,
+    11
+  ],
+  "tree_checks": 80,
+  "finite_tree_checks": 96,
+  "cycle_modes": [
+    2,
+    9
+  ],
+  "cycle_checks": 40,
+  "majorana_parity_modes": [
+    1,
+    4
+  ],
+  "max_parity_residual": 3.0697584096417446e-16,
+  "reference_trace_norm_checks": 20,
+  "max_reference_error_residual": 2.220446049250313e-16,
+  "finite_three_mode_gap": {
+    "action": "32 ln 2",
+    "interacting_achievable_error": "39/65536",
+    "strict_lower_bound_on_gaussian_error": "50319361/68719476736"
+  },
+  "strict_three_mode_gap": {
+    "action": 20.79441541679836,
+    "exact_gaussian_error": 0.001464128727093339,
+    "interacting_achievable_error": 0.0010139186366912363
+  }
+}
