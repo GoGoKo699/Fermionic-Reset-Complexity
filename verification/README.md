@@ -8,7 +8,7 @@ The recorded environment uses Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0, and Mat
 
     python -m pip install -r verification/requirements.txt
 
-Run the five scripts with ordinary Python so that their assertions remain enabled:
+Run these scripts with ordinary Python so that their assertions remain enabled:
 
     python verification/gaussian_hilbert_conventions.py
     python verification/check_gaussian_action.py
@@ -17,7 +17,7 @@ Run the five scripts with ordinary Python so that their assertions remain enable
     python verification/finite_protocol.py
     python verification/plot_action_scaling.py
 
-Each script creates its output directory as needed. JSON results are written under verification/results/; the action figure is written under verification/figures/. The three matrix checks use seed 20261030. Their floating-point residuals can vary slightly across numerical-library builds. The Gaussian-action report also records a UTC execution time, so its JSON is not intended to be byte-identical between runs.
+Each script creates its output directory as needed. JSON results are written under verification/results/; the action figure is written under verification/figures/. The randomized diagnostics fix their seeds. Their floating-point residuals can vary slightly across numerical-library builds. The Gaussian-action report also records a UTC execution time, so its JSON is not intended to be byte-identical between runs.
 
 ## What each script checks
 
