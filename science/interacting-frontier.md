@@ -32,7 +32,7 @@ For contact action $`a`$, an edge $`s\to t`$ updates its donor and recipient blo
 Here the blocks may be positive operators on an external reference. Prepend a finite Gaussian occupation dephasing by averaging the independent mode sign rotations $`\exp(i\pi c_j^\dagger c_j)`$. The input then has the form $`\sum_x |x\rangle\langle x|\otimes\sigma_x`$, with $`\sum_x\sigma_x=\rho_R`$. Writing $`p(x)$` for the probability that the ensuing classical schedule ends at vacuum given initial occupation $`x`$, the half-trace error of this input is
 
 ```math
-\operatorname{Tr}\!\left(\sum_x (1-p(x))\sigma_x\right).
+\mathrm{Tr}\!\left(\sum_x (1-p(x))\sigma_x\right).
 ```
 
 In fact, the error matrix has positive blocks at all nonvacuum states, and its vacuum block is minus their sum. Consequently a uniform upper bound on the classical failure probabilities is a half-diamond bound. For a schedule preceded instead by the [even Gaussian parity twirl](universal-frontier.md), only the two uniform sector inputs need be compared. The odd one has the larger failure probability by the parity decay identity. Its output is already diagonal under the schedules considered here.
@@ -55,10 +55,10 @@ This conditional bound gives a coupling to $`M`$ independent Bernoulli trials of
 
 ```math
 A=kMa,\qquad
-\epsilon_{\rm I}^*(n,kMa)\le\Pr\{\operatorname{Bin}(M,1-e^{-a})<r\}.
+\epsilon_{\rm I}^*(n,kMa)\le\Pr\{\mathrm{Bin}(M,1-e^{-a})<r\}.
 ```
 
-For instance, $`a=\ln 2`$ gives $`\mathbb E[2^{-\operatorname{Bin}(M,1/2)}]=(3/4)^M`$. The error is at most $`2^r(3/4)^M`$. With $`b=2`$, we can use $`r=n`$ and take
+For instance, $`a=\ln 2`$ gives $`\mathbb E[2^{-\mathrm{Bin}(M,1/2)}]=(3/4)^M`$. The error is at most $`2^r(3/4)^M`$. With $`b=2`$, we can use $`r=n`$ and take
 
 ```math
 M=\left\lceil\frac{n\ln 2+\ln(1/\epsilon)}{\ln(4/3)}\right\rceil,
@@ -94,8 +94,8 @@ It preserves both parity sectors, as do the pulses. Denote its restriction to th
 Hamiltonian evolution and unitary pulses contribute only determinant phases. For a conjugated port the same formula holds because parity-preserving conjugation leaves the sector trace unchanged. Applying arithmetic–geometric mean to the eigenvalues of $`K_-^\dagger K_-`$ yields
 
 ```math
-\operatorname{Tr}(K\tau_-K^\dagger)
-=\frac1m\operatorname{Tr}(K_-^\dagger K_-)
+\mathrm{Tr}(K\tau_-K^\dagger)
+=\frac1m\mathrm{Tr}(K_-^\dagger K_-)
 \ge |\det K_-|^{2/m}
 =e^{-a/2}.
 ```
@@ -120,7 +120,7 @@ Rank is the cycle distance to vacuum. Every transfer lowers rank by one, and eac
 ```math
 \begin{aligned}
 \epsilon_{\rm I}^*(n,2Ma)
-&\le \Pr\{\operatorname{Bin}(M,1-e^{-a})<m\} \\
+&\le \Pr\{\mathrm{Bin}(M,1-e^{-a})<m\} \\
 &= e^{-Ma}\sum_{j=0}^{m-1}\binom{M}{j}(e^a-1)^j.
 \end{aligned}
 ```
