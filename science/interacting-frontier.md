@@ -29,7 +29,7 @@ For contact action $`a`$, an edge $`s\to t`$ updates its donor and recipient blo
 \sigma_t\longmapsto\sigma_t+(1-e^{-a})\sigma_s.
 ```
 
-Here the blocks may be positive operators on an external reference. Prepend a finite Gaussian occupation dephasing by averaging the independent mode sign rotations $`\exp(i\pi c_j^\dagger c_j)`$. The input then has the form $`\sum_x |x\rangle\langle x|\otimes\sigma_x`$, with $`\sum_x\sigma_x=\rho_R`$. Writing $`p(x)$` for the probability that the ensuing classical schedule ends at vacuum given initial occupation $`x`$, the half-trace error of this input is
+Here the blocks may be positive operators on an external reference. Prepend a finite Gaussian occupation dephasing by averaging the independent mode sign rotations $`\exp(i\pi c_j^\dagger c_j)`$. The input then has the form $`\sum_x |x\rangle\langle x|\otimes\sigma_x`$, with $`\sum_x\sigma_x=\rho_R`$. Writing $`p(x)`$ for the probability that the ensuing classical schedule ends at vacuum given initial occupation $`x`$, the half-trace error of this input is
 
 ```math
 \mathrm{Tr}\!\left(\sum_x (1-p(x))\sigma_x\right).
